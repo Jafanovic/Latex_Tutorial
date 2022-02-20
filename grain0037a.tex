@@ -1,0 +1,25 @@
+https://tex.stackexchange.com/questions/415369/tcolorbox-theorem-numbering
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb,parskip}
+\usepackage[margin=1in]{geometry}
+\usepackage{titling,multicol}
+\usepackage[most]{tcolorbox}
+
+\usepackage{graphicx,float}
+\usepackage{hyperref}
+
+\newtcbtheorem{mytheo}{Příklad}{colback=purple!5,colframe=blue!100!,fonttitle=\bfseries}{th}
+
+\begin{document}
+
+\begin{mytheo*}{}
+  text...
+\end{mytheo*}
+
+See \ref{th:foo} 
+\section{Moje sekce 1}
+\begin{mytheo}{Poznáváme komplexní čísla}{foo}
+  text...
+\end{mytheo}
+
+\end{document}

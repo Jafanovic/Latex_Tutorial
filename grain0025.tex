@@ -1,0 +1,53 @@
+% !Mode:: "TeX:UTF-8"
+% https://tex.stackexchange.com/questions/20580/how-to-enable-ligatures-for-emdash-endash-in-luatex
+\documentclass{article}
+\usepackage{fontspec}
+    \defaultfontfeatures{Ligatures={TeX}}
+    \setmainfont{Cambria}
+    \setsansfont{Calibri}
+\usepackage{ifluatex,ifxetex}
+\usepackage{expl3}
+
+\begin{document}
+
+\ifxetex
+    This is XeTeX
+\else\ifluatex
+    This is LuaTeX
+
+\fi\fi
+
+\section{Cambria}
+
+\begin{enumerate}
+    \item <<double quote>> by ligatures \verb|<<ligatures>>|
+    \item «double quotes» by symbols \verb|«double quotes»|
+    \item en--dash by ligatures \verb|en--dash|
+    \item em---dash by ligatures \verb|em---dash|
+    \item en-dash by symbol \verb|en-dash|
+    \item em—dash by symbol \verb|em—dash|
+\end{enumerate}
+
+\section{Linux Libertine O}
+\fontspec{Linux Libertine O}\selectfont
+\begin{enumerate}
+    \item <<double quote>> by ligatures \verb|<<ligatures>>|
+    \item «double quotes» by symbols \verb|«double quotes»|
+    \item en--dash by ligatures \verb|en--dash|
+    \item em---dash by ligatures \verb|em---dash|
+    \item en-dash by symbol \verb|en-dash|
+    \item em—dash by symbol \verb|em—dash|
+\end{enumerate}
+
+\section{Cambria + Basic Renderer}
+\fontspec[Renderer=Basic]{Cambria}\selectfont
+\begin{enumerate}
+    \item <<double quote>> by ligatures \verb|<<ligatures>>|
+    \item «double quotes» by symbols \verb|«double quotes»|
+    \item en--dash by ligatures \verb|en--dash|
+    \item em---dash by ligatures \verb|em---dash|
+    \item en-dash by symbol \verb|en-dash|
+    \item em—dash by symbol \verb|em—dash|
+\end{enumerate}
+
+\end{document}

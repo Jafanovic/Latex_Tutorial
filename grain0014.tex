@@ -1,0 +1,41 @@
+% https://tex.stackexchange.com/questions/263439/hyphenation-in-two-languages-in-xelatex-polyglossia
+\documentclass{scrbook}
+\usepackage{polyglossia} 
+  \setdefaultlanguage{czech}
+  \setotherlanguage{greek}
+  \setmainfont{Cambria}
+  % \setmainfont{TeX Gyre Pagella}
+  \newcommand{\GREEK}[1]{\foreignlanguage{greek}{#1}}
+\usepackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+\setmathfont{Cambria Math}
+\usepackage{siunitx}
+\sisetup{
+  output-decimal-marker = {,},       % set the comma as decimal point 
+  fraction-function = \sfrac,
+  separate-uncertainty = true,
+  multi-part-units=single,
+  input-complex-roots = j, 
+  output-complex-root = \ensuremath{\mathrm{j}},
+  exponent-product = {\cdot},        % exponent-product option example: \times, \ldots
+  math-micro=\text{µ},text-micro=µ,  % http://tex.stackexchange.com/questions/33965
+  range-phrase=%                     % https://tex.stackexchange.com/questions/13493
+    \ifmmode\mathbin{\text{\;až\;}}   % https://tex.stackexchange.com/questions/133704
+    \else
+      \;{až}\;                        % https://tex.stackexchange.com/questions/74353/
+    \fi,                              %
+  separate-uncertainty
+}
+
+\usepackage{blindtext}
+
+\begin{document}
+ \SI{1}{\m}
+ \blindtext[3]
+ 
+ \begin{equation}\label{mai:eq027}
+  x=\varphi(t),\ y=\psi(t),\ t\in J,
+\end{equation}
+
+\GREEK{ἀπιϰόμενοι.. ἐσήγαγον διδασϰάλια ἐς τοὺς ῞Ελληνας ϰαὶ δὴ ϰαὶ }
+
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{media9}
+\addmediapath{../media}
+
+\newcommand{\AddVideo}[3]{
+  \includemedia[
+    activate=pageopen,
+    width=#1pt,height=#2pt,
+    addresource=#3.mp4,
+    flashvars={ src=#3.mp4 &loop=true &scaleMode=stretch}
+  ]{}{StrobeMediaPlayback.swf}            % VPlayer.swf StrobeMediaPlayback.swf
+  }
+
+\begin{document}
+
+text
+
+\includemedia[
+width=0.6\linewidth,height=0.3375\linewidth, % 16:9
+activate=pageopen,
+flashvars={
+src=http://www.youtube.com/v/r382kfkqAF4?rel=0
+&scaleMode=stretch
+}
+]{}{StrobeMediaPlayback.swf}
+
+
+\AddVideo{160}{130}{vf_div}
+
+\end{document}

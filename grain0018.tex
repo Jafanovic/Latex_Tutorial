@@ -1,0 +1,26 @@
+% https://tex.stackexchange.com/questions/517922/error-animate-package-cant-find-the-requested-pdf-file
+\documentclass{article}
+  \usepackage{graphicx}
+  \usepackage{animate}
+  \makeatletter
+  \def\@anim@getpagecount#1#2#3{%
+      \edef\@anim@tempfilename{\noexpand\unquote@name{#1.#2}}%
+      \pdfximage page 1 {\@anim@tempfilename}\xdef#3{\the\pdflastximagepages}%
+    }
+  \makeatother
+
+\begin{document}
+
+text
+% \begin{frame}{Embedded Animation}
+%   \animategraphics[loop,controls,width=\linewidth]{10}{vf_div}{0}{33}
+% \end{frame}
+
+\graphicspath{{../src/MAI/img/}}
+\begin{figure}
+  \centering
+  \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
+  % \caption{My caption}
+\end{figure}
+
+\end{document}

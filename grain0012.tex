@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+% \begingroup
+\begin{align*}
+  \begin{array}{c} 
+    \binom{0}{0}                                                                              \\
+    \binom{1}{0}\quad \binom{1}{1}                                                            \\  
+    \binom{2}{0}\quad \binom{2}{1}\quad \binom{2}{2}                                          \\ 
+    \binom{3}{0}\quad \binom{3}{1}\quad \binom{3}{2}\quad \binom{3}{3}                        \\ 
+    \binom{4}{0}\quad \binom{4}{1}\quad \binom{4}{2}\quad \binom{4}{3}\quad  \binom{4}{4}     \\ 
+    \hdotsfor{1}                                                                              \\
+    \binom{n}{0}\; \binom{n}{1}\; \binom{n}{2}\; \cdots\; 
+    \binom{n}{n-2}\; \binom{n}{n-1}\; \binom{n}{n}                                            \\ 
+  \end{array}
+\end{align*}
+
+\begin{gather*}
+  \begin{array}{ll}
+    A_1                &: \text{Při prvním opakování dojde ke zdaru.}                  \\
+    A_2                &: \text{Při druhém opakování dojde ke zdaru.}                  \\
+    \hdotsfor{2}                                                                       \\
+    A_x                &: \text{Při \(x\)-tém opakování dojde ke zdaru.}               \\
+    \overline{A}_{x+1} &: \text{Při \((x + 1)\)-tém opakování dojde k nezdaru.}        \\
+    \hdotsfor{2}                                                                       \\
+    \overline{A}_n     &: \text{Při posledním \(n\)-tém opakování dojde k nezdaru,}
+  \end{array}
+\end{gather*}
+% \endgroup
+
+\end{document}

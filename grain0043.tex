@@ -1,0 +1,12 @@
+% https://tex.stackexchange.com/questions/445821/pre-built-preamble-with-lualatex-and-microtype?noredirect=1&lq=1
+% To generate the format I used
+
+% lualatex -ini -jobname="pream" "&lualatex" mylatexformat.ltx """grain0043_pream.tex"""
+% and to compile main.tex I used
+
+% lualatex -fmt pream """grain0043"""
+\title{Test Document}
+\author{Me}
+\begin{document}
+  \blindmathpaper
+\end{document}

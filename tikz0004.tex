@@ -1,0 +1,15 @@
+% https://www.latex4technics.com/?note=m2t0fu
+\documentclass{standalone}
+\usepackage[siunitx]{circuitikz}
+
+\begin{document}
+
+\begin{circuitikz}[american]
+    \draw (0,0) to[/tikz/circuitikz/bipoles/length=0.6cm, D*, v^=$v_g$] (2,0)
+        node [right] {\tiny\verb|default|};
+    \draw (0,1) to[/tikz/circuitikz/bipoles/length=0.6cm, D*, v^=$v_g$,label/align=rotate] (2,1)
+        node [right] {\tiny\verb|label/align=rotate|};
+    \draw (0,2) to[/tikz/circuitikz/bipoles/length=0.6cm, D*, v^=\raisebox{1.0ex}{$v_g$}] (2,2) 
+        node [right] {\tiny\verb|\raisebox|};
+\end{circuitikz}
+\end{document}

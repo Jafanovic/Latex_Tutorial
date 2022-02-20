@@ -1,0 +1,23 @@
+% https://tex.stackexchange.com/questions/53330/mdframed-package-align-gives-extra-vertical-space
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+
+\usepackage{mdframed}
+\usepackage{blindtext}
+
+\begin{document}
+\allowdisplaybreaks
+\begin{mdframed}
+\rule{\linewidth}{0pt}
+\begin{align*}
+x^2 + y^2 = z^2 \\
+x^2 + y^2 = z^2 \\
+x^2 + y^2 = z^2 \\
+x^2 + y^2 = z^2 \\
+x^2 + y^2 = z^2 \\
+x^2 + y^2 = z^2
+\end{align*}
+\end{mdframed}
+
+\end{document}

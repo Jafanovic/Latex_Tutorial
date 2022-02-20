@@ -1,0 +1,29 @@
+% https://tex.stackexchange.com/questions/320230
+\documentclass{standalone}
+\usepackage[european]{circuitikz}
+\usetikzlibrary{arrows}
+\begin{document}
+  \begin{circuitikz}[scale=.8,transform shape ]
+    \ctikzset{voltage/distance from node=.2}% defines arrow's distance from nodes
+    \ctikzset{voltage/distance from line=.02}% defines arrow's distance from wires
+    \ctikzset{voltage/bump b/.initial=2}% defines arrow's curvature
+
+    \draw % draw nodes
+      (0, 0) node[op amp,yscale=-1] (opamp) {}
+      (-3,0.5) node[ocirc] (A) {}
+      (-3,-3.8) node [ocirc] (B) {}
+      (5,0) node[ocirc] (C) {}
+      (5,-3.8) node[ocirc] (D) {} 
+
+      (opamp.+) to (A) to [open,v=$u_e(t)$] (B)
+      (opamp.-) -|  (-1.5,-1.8)
+      to[short,*-] (.5,-1.8) 
+      to [C,l=$C$] (2,-1.8)
+      to [R,l=$R_1$] (3.2,-1.8)
+      to [short,-] (3.8,-1.8) to [short,-*] (3.8,0)
+      (opamp.out) to [short,-o] (C) to [open, v^=$u_a(t)$] (D)
+      (B) to[short,-] (-1.5,-3.8) to [R,l=$R_2$,*-*] (-1.5,-1.8)
+      (-1.5,-3.8) [short,*-o] to (D)
+      ;
+  \end{circuitikz}
+\end{document}

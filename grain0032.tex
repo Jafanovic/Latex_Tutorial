@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array} % for "\newcolumntype" macro
+\newcolumntype{C}{>{{}}c<{{}}}
+%% set up a little custom enrironment:
+\newenvironment{myarray}[1]{%
+   \setlength\arraycolsep{0pt}
+   \left\{ \begin{array}{#1}}{%
+   \end{array} \right.}
+
+\begin{document}
+\[
+\begin{myarray}{rCrCrCl}
+ \alpha &+& 2\beta &+&  \gamma &=& 0 \\
+3\alpha &+& 7\beta &+& 5\gamma &=& 1
+\end{myarray}
+\]
+
+\begin{equation}
+  \begin{array}{rCrCrCl}
+    A &+& B &+& C &=&0, \\
+      &-& B &+& C &=&1, \\
+   -A & &   & &   &=&2. 
+  \end{array}   
+\end{equation}
+
+\begin{equation}
+  \begin{array}{rcrcrcrcl}
+      & & B &+& C & &   &=& 2,  \\
+    A &+& B & &   &+& D &=& 0,  \\
+    A &+& B & &   & &   &=& 1,  \\
+    A & &   & &   & &   &=& 2.
+  \end{array}
+\end{equation}
+
+\begin{equation*}
+  \begin{array}{rcrcrcl}
+    A &+& B &+& C &=&0, \\
+      &-& B &+& C &=&1, \\
+   -A & &   & &   &=&2. 
+  \end{array}   
+\end{equation*}
+
+\end{document}

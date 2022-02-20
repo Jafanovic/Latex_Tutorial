@@ -1,0 +1,31 @@
+% How can I superimpose LaTeX / TeX output over a PDF file?
+% issue: esvect font substution problem:
+% LaTeX Font Warning: Font shape `U/esvect/m/n' in size <13> not available
+% (Font)              size <12> substituted on input line 58.
+
+
+
+\documentclass{scrbook}
+  % \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
+  \usepackage{lipsum}
+  % \usepackage{pdfoverlay}
+  % \pdfoverlaySetPDF{grain0068a.pdf}
+
+
+\listfiles
+\begin{document}
+  \begin{equation*}\color{red}
+    \vec{g}(\vec{r}) = - \kappa\dfrac{M_Z}{r^2}\left(\dfrac{\vec{r}}{r}\right),\,
+    V(\vec{r}) = -\kappa\dfrac{M_Z}{r}, \, r\geq R_Z.
+  \end{equation*}
+
+  \begin{tcnote}
+    \faEarlybirds \lipsum[2]
+  \end{tcnote}
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass{scrbook}
+
+\usepackage{etoc, blindtext}
+\newcommand{\chaptertoc}[1][Chaptertoc]{%
+  \etocsettocstyle{\addsec*{#1}}{}%
+  \localtableofcontents%
+}
+
+
+\begin{document}
+\part{First Part}
+\part{Second Part}
+\part{Third Part}
+\chaptertoc{}
+
+\bigskip{}
+
+
+\chapter{First Chapter}
+\label{CLA:first-chapter}
+
+\chaptertoc{}
+
+\bigskip{}
+
+\blindtext
+
+\section{First section in first chapter}
+\label{CLA:first-section-first}
+
+\blindtext
+
+\section{Second section in first chapter}
+\label{CLA:second-section-first}
+
+And this section even has subsections:
+
+\blindtext{}
+
+\subsection{First subsec in second sec of first chapter}
+\label{CLA:first-subsec-second}
+
+\blindtext{}
+
+\subsection{You know how to proceed}
+\label{CLA:you-know-how}
+
+\blindtext{}
+
+\chapter{Second Chapter}
+\label{CLA:second-chapter}
+
+\end{document}

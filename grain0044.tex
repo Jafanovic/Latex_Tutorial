@@ -1,0 +1,64 @@
+% https://tex.stackexchange.com/questions/301993/create-custom-note-environment-with-tcolorbox
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{diffcoeff}
+\usepackage{nccmath}
+\usepackage{scalerel}
+
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{note}[1][]{%
+  enhanced jigsaw, % better frame drawing
+  borderline west={2pt}{0pt}{red}, % straight vertical line at the left edge
+  sharp corners, % No rounded corners
+  boxrule=0pt, % no real frame,
+  fonttitle={\large\bfseries},
+  coltitle={black},  % Black colour for title
+  title={Note:\ },  % Fixed title
+  attach title to upper, % Move the title into the box
+  #1
+}
+
+\usepackage{blindtext}
+
+\begin{document}
+
+  \blindtext
+  \begin{note}
+      Here comes a useful note for demonstration. Let's add enough text to break the line, just to
+      be sure the vertical line extends with the text.
+  \end{note}
+
+  \begin{note}[borderline west={2pt}{0pt}{blue}, colback=yellow, drop shadow={red,opacity=0.6}]
+      Here comes a useful note for demonstration. Let's add enough text to break the line, just to
+      be sure the vertical line extends with the text.
+  \end{note}
+
+  \begin{fleqn}[\parindent] 
+    \begin{equation}
+      \int(u(x)v(x))'{x} = u(x)v(x) + c  =  \\
+      = \int\left(u'(x)v(x)+u(x)v'(x)\right){x}.
+    \end{equation}
+  \end{fleqn}
+
+  \begin{equation*}
+  \begin{multlined}
+    S = \scalerel{\int_{t_1}^{t_2}}{
+      \left[
+          \frac{m}{2}\left(\diff{\underline{x}}{t}\right)^2-V(\underline{x}) 
+           + m\diff{x}{t}\diff{\eta}{t} - \eta V'(\underline{x}) 
+      \right.} \\
+      % \left.
+          + (\text{druhý řád a vyšší řády})
+      \Bigg]
+    dt  \stackrel{?}{=} = 0.
+  \end{multlined}
+  \end{equation*}
+  
+  \blindtext
+  \begin{equation*}
+    KE = \dfrac{m}{2}\left[\diff[2]{x}{t} +\diff[2]{y}{t} + \diff[2]{z}{t}\right].
+  \end{equation*}
+
+  \(\mathcal{L}\)
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass[
+  fontsize=12pt,
+  open=any,
+  titlepage=false,
+  chapterprefix=true]{scrbook}
+
+%~~~~~~~~~~~Fonts~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{fontspec}
+  \setmainfont{Cambria}
+
+\usepackage{scrlayer-scrpage}
+% \usepackage{scrextend}        % It should never be used with a KOMA-Script class
+\usepackage{polyglossia}
+  \setdefaultlanguage{czech}
+\usepackage[style=british]{csquotes}
+
+% \usepackage{luamath}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{epigraph}                  % \epigraph style
+% \usepackage{bm}                        % bold symbols in maths mode
+\newcommand*{\bm}[1]{\symbf{#1}}
+\usepackage{mathtools}                 % extension package to amsmath  
+\usepackage{bigints}                   % write big integrals  
+\usepackage{polynom}                   % implements macros for manipulating
+
+\usepackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+
+
+\begin{document}
+%
+Pokus 2:
+
+Bold $\bm{E}$ a co takhle \(\symbf{E}\) zdenicka \(\symup{V}\) vfvfv
+\(\symbfit{j}\) co tohhle \(l_{\text{stř}}\) nebo  \(l_\text{stř}\)
+\\
+Normal $E$
+
+
+%
+\end{document}

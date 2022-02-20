@@ -1,0 +1,24 @@
+% https://tex.stackexchange.com/questions/58098/what-are-all-the-font-styles-i-can-use-in-math-mode%3E
+\documentclass[varwidth, preview]{standalone}
+
+\usepackage{mathtools}
+\usepackage[math-style=ISO]{unicode-math}
+
+\setmainfont{TeX Gyre Pagella}
+\defaultfontfeatures{Scale=MatchLowercase}
+
+\setmathfont{Asana Math}
+\setmathfont[range={up/{Latin,latin,Greek,greek}, 
+                    bfup/{Latin,latin,Greek,greek}},
+             script-features={}, sscript-features={}
+            ]{Neo Euler}
+
+\newcommand\upe{\symup{e}}
+\newcommand\upi{\symup{i}}
+
+\begin{document}
+\begin{align*}
+  \upe^{\upi x} &= \cos{x} + \upi \sin{x} \\
+  \upe^{\upi \uppi} + 1 &= 0
+\end{align*}
+\end{document}

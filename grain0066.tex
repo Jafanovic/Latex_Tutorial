@@ -1,0 +1,32 @@
+% https://tex.stackexchange.com/questions/598293/protecting-polynom-package-against-czech-babel-option
+% https://tex.stackexchange.com/questions/371870/polynom-package-bug?rq=1
+% https://tex.stackexchange.com/questions/155579/polynom-division-without-package-polynom?rq=1
+
+\documentclass{article}
+  \usepackage[main=czech]{babel}
+  % \shorthandoff{-}
+  \usepackage{amsmath}
+  \usepackage{polynom}
+  \usepackage{xpatch}
+  \usepackage{graphics}
+
+
+\listfiles
+
+\xpatchcmd{\polylongdiv}{\begingroup}{\begingroup\shorthandoff{-}}{}{}
+
+\begin{document}
+\shorthandoff{-}
+  \begin{equation*}
+    \polylongdiv[style=C,div=:]{x^3+4x^2-x+2}{x^2+x-3}
+  \end{equation*}
+
+  $\polylongdiv[style=C,div=:]{x^3+1}{x^2+3}$
+
+  \begin{equation*}
+    \rotatebox{90}{$
+      {\polylongdiv[style=C,div=:]{x^3+4x^2-x+2}{x^2+x-3}}
+    $}
+  \end{equation*}
+
+\end{document}

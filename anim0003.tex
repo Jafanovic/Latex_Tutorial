@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{animate}
+\usepackage{tikz}
+
+
+\begin{document}
+
+  \begin{animateinline}[autoplay,method=ocg,loop]{8}
+  \multiframe{30}{n=0+1}{   
+    \begin{tikzpicture}
+      \node(img){\includegraphics{faraday.png}};
+      \node(img){\hspace{-13em}\includegraphics{magnet.png}};
+      \node(img){\includegraphics{blueLines.png}};
+      \node[xshift=-1.9cm, yshift=4.1cm](img){\includegraphics{stick_\n.png}};
+      \node[xshift=-1.9cm, yshift=4.1cm](img){\includegraphics{circle_\n.png}};
+    \end{tikzpicture}    
+  }
+  \end{animateinline}
+  \end{document}

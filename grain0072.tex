@@ -1,0 +1,25 @@
+% https://tex.stackexchange.com/questions/17522/pascals-triangle-in-tikz#_=_
+\documentclass[12pt, border=5mm]{standalone}
+\usepackage{luatex85,luamplib}
+    \mplibnumbersystem{double}
+    \mplibtextextlabel{enable}
+\begin{document}
+\begin{mplibcode}
+vardef Pascal_triangle(expr n, u, v) =
+    save b; numeric b[][]; clearxy;
+    b[0][0] = 1; b[0][1] = 0; label("1", origin);
+    for i = 1 upto n:
+        x := -u*i/2; y := -i*v;
+        b[i][0] = 1; label("1", z);
+        for k = 1 upto i:
+            x := x + u;
+            b[i][k] = b[i-1][k-1] + b[i-1][k]; label(decimal(b[i][k]), z);
+        endfor b[i][i+1]=0;
+    endfor
+enddef;
+
+beginfig(1);
+    Pascal_triangle(19, 1.4cm, 1cm);
+endfig;
+\end{mplibcode}
+\end{document}

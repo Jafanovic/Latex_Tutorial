@@ -1,0 +1,41 @@
+% issue: tcbtheorem: Twoline title with the description starting below “Theorem #”
+% https://tex.stackexchange.com/questions/566094/
+\documentclass{article}
+\usepackage{tcolorbox}
+\tcbuselibrary{many}
+\usepackage{xpatch}
+
+\definecolor{theoremgray}{rgb}{0.93, 0.93, 0.93}
+\newtcbtheorem{theorem}{Theorem}%
+{
+    enhanced, 
+    frame empty, breakable,
+    colframe=black, coltitle=black,
+    fonttitle=\bfseries , colbacktitle=white,
+    fontupper=\slshape, colback=theoremgray,
+    borderline={0.5mm}{0mm}{theoremgray},
+    attach boxed title to top left,,
+    boxed title style={boxrule=0.5mm, rounded corners},
+    boxed title size={copy},
+    minipage boxed title,
+    separator sign={},
+    description formatter=\newline
+}{theo}
+
+
+% usage: title={\tcb@theo@title{Theorem}{\thetcbcounter}{<description>}}
+\makeatletter
+\xpatchcmd\tcb@theo@title
+  {\hangindent\wd\z@\hangafter=1}
+  {}
+  {}{\fail}
+\makeatother
+
+\listfiles
+
+\begin{document}
+
+\begin{theorem}{This is a slightly too long title that just causes a break}{test1}
+  Some text in my theorem.
+\end{theorem}
+\end{document}

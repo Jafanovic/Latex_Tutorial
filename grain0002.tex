@@ -1,0 +1,27 @@
+% how-to-switch-of-headsepline-in-koma-script-for-selfdefined-pagestyle
+% https://tex.stackexchange.com/questions/328201/
+\documentclass[a4paper,11pt,twoside]{scrbook}
+\usepackage[manualmark,headsepline,footsepline]{scrlayer-scrpage}
+\usepackage{blindtext}
+
+\lehead{left even}
+\cehead{center even}
+\rehead{right even}
+
+\lohead{left odd}
+\cohead{center odd}
+\rohead{right odd}
+
+\newpairofpagestyles[scrheadings]{chapter}{%
+\KOMAoptions{headsepline=false}%
+\lehead*{}%
+\cehead*{useless text}%
+\cohead*{usefull text}%
+\rohead*{}%
+}
+
+\renewcommand*\chapterpagestyle{chapter}
+
+\begin{document}
+\blinddocument
+\end{document}

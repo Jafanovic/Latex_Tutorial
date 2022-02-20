@@ -1,0 +1,22 @@
+\documentclass[10pt]{book}
+\usepackage[english,slovak]{babel}
+\usepackage{booktabs}
+
+\usepackage{regexpatch}
+\makeatletter
+% Change the `-` delimiter to an active character
+\xpatchparametertext\@@@cmidrule{-}{\cA-}{}{}
+\xpatchparametertext\@cline{-}{\cA-}{}{}
+\makeatother
+
+\begin{document}
+
+\begin{tabular}{ccc}
+A & B & C \\
+\cmidrule{2-3}
+A & B & C \\
+\cline{1-2}
+A & B & C \\
+\end{tabular}
+
+\end{document}

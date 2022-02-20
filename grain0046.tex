@@ -1,0 +1,31 @@
+% https://tex.stackexchange.com/questions/180261/math-in-table-of-contents-bookmarks-and-heading
+\documentclass{article}
+\usepackage[main=czech]{babel}
+  \usepackage{bm} % for bold math
+  \usepackage[
+    colorlinks=true,
+    pdfencoding=auto, % or unicode
+    psdextra,         % Then \geq can directly be used instead of \textgeq.
+  ]{hyperref}[2012/08/13]
+  \usepackage{bookmark}% recommended
+  \usepackage{booktabs}
+
+  \begin{document}
+  \shorthandoff{-}
+
+  \tableofcontents
+  \section[Substituční Metoda Typu \texorpdfstring{\(\nabla\)}{\textnabla}]
+          {Substituční metoda typu \(\bm{\nabla}\)}
+
+  \section[\texorpdfstring{Math symbols $\sum, \int$}%
+                          {Math symbols \sum, \int}]%
+          {Math symbols $\bm{\sum, \int}$}  % note use of \bm ("bold math")
+
+  \begin{tabular}{ccc}
+    A & B & C \\
+    \cmidrule{2-3}
+    A & B & C \\
+    \cline{1-2}
+    A & B & C \\
+  \end{tabular}
+\end{document}

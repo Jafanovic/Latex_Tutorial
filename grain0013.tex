@@ -1,0 +1,24 @@
+% !TeX program = xelatex % or: lualatex
+% https://tex.stackexchange.com/questions/360448/how-to-use-futura-font-in-latex
+\documentclass[a5paper]{article}
+\usepackage{polyglossia} 
+  \setmainfont[Ligatures=TeX]{Times New Roman}
+  \setdefaultlanguage{czech}
+  \setotherlanguage{greek}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+
+\begin{document}
+The quick brown fox jumps over the lazy dog.
+
+\itshape
+The quick brown fox jumps over the lazy dog.
+
+\begin{greek}[variant=ancient]Κύκλος γαλακτικός\end{greek}  
+
+\begin{equation*}
+  \int e^x = 0
+\end{equation*}  
+
+\end{document}

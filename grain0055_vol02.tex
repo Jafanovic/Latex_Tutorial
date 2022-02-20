@@ -1,0 +1,17 @@
+% lualatex.exe \providecommand{\DebugMode}{true}\input{grain0055_vol02.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=grain0055_vol02
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\documentclass{scrbook}
+  \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+
+
+\providecommand\DebugMode{false}
+\providecommand\eBookMode{true}
+
+
+\externaldocument[]{vol01}[vol01.pdf] 
+
+\begin{document}
+ Link to grain0055vol1 \ref{mai:exam118}. 
+\end{document}

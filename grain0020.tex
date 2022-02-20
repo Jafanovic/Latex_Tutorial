@@ -1,0 +1,183 @@
+% https://tex.stackexchange.com/questions/516093/replacement-minitoc-package-style-by-koma-script-possibilities
+\documentclass[open=any, titlepage=false, twocolumn, fontsize=10pt,]{scrbook}
+
+\usepackage[showframe]{geometry}
+\usepackage{blindtext}
+% ==================================================================================================
+%                                     My KOMA settig 
+% ==================================================================================================
+% http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\usepackage{scrhack}                      % KOMA warning about ToC
+\usepackage{xcolor}
+
+% ---- Part ----------------------------------------------------------------------------------------
+% https://tex.stackexchange.com/questions/102303/
+% \newcommand{\partformat}{{\partname}{}} % Remove chapter and part text from LaTeX documents
+% https://tex.stackexchange.com/questions/110092/how-to-change-part-and-chapter-pages-on-koma-script
+\newcommand*\partcolor{\color{blue}}% Part is coloured blue
+\renewcommand*\partformat    {\partcolor\partname~\thepart\if@altsecnumformat.\fi}
+
+
+% Adjusting spacing around section subsection titles with koma script
+% https://tex.stackexchange.com/questions/223508/
+% https://tex.stackexchange.com/questions/43087/
+\RedeclareSectionCommand[
+    beforeskip=-1sp,
+    afterskip=2\baselineskip
+  ]{chapter}
+\RedeclareSectionCommand[
+    beforeskip=-\baselineskip,
+    afterskip=.5\baselineskip
+  ]{section}
+\RedeclareSectionCommand[
+    beforeskip=-.75\baselineskip,
+    afterskip=.5\baselineskip
+  ]{subsection}
+\RedeclareSectionCommand[
+    beforeskip=-.5\baselineskip,
+    afterskip=.25\baselineskip
+  ]{subsubsection}
+
+
+% % °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% % °°°°°                           Table fo content  TOC                                     °°°°°°
+% % °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% the tocbasic package style selected and configured with \DeclareTOCStyleEntry
+\KOMAoptions{toc=chapterentrydotfill}
+
+\DeclareTOCStyleEntry[%
+    dynnumwidth=true,%
+    % numwidth=3.5em, 
+    indent=3em, 
+    beforeskip=1em
+  ]{tocline}{part} % scrguien page 357
+\DeclareTOCStyleEntry[
+    dynnumwidth=true,
+    % numwidth=2em, 
+    beforeskip=1em
+  ]{tocline}{chapter}
+
+% ---- Table fo content for each chapter------------
+% minitoc.pdf: If used, the hyperref package must be loaded before minitoc. 
+% https://tex.stackexchange.com/questions/334007
+% https://tex.stackexchange.com/questions/268205
+% https://tex.stackexchange.com/questions/167390
+% https://tex.stackexchange.com/questions/164308/
+\let\cleardoublepage=\clearpage            % Remove blank page after TOC and title page
+\usepackage[nohints,tight]{minitoc}        % formatting table of contents.
+  \mtcsettitle{minitoc}{ }                 % sets title or empty title (i.e. no title)
+  \mtcsettitle{parttoc}{Obsah} 
+  % Vertical gap before part-level mini-tables titles. Default: 50pt
+  \renewcommand\mtcgapbeforeheads{0pt}  
+  % Vertical gap after part-level mini-tables titles. Default: 40pt   
+  \renewcommand\mtcgapafterheads{0pt}
+  % \mtcsettitle{minitoc}{Obsah}  
+  \mtcsetrules{minitoc}{off}
+  % \mtcsetrules{*}{off}                   % all rules in the various ToCs are disabled then           
+  \mtcsetoffset{minitoc}{-0.5em}
+  \setlength{\mtcindent}{-0.5em}           % sets the indentation of the toc
+  \mtcsetfeature{minitoc}{open}{\vspace{1mm}}
+
+% onecolumn table of contents & minitoc in twocolumn document:
+% https://tex.stackexchange.com/questions/151320/
+  \newcommand{\dochaptertoc}{%
+    \vspace{-1.5\baselineskip} % workaround for removed rule
+    \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+    \vspace{-2.5\baselineskip} % workaround for removed rule
+    \minitoc
+    \vspace{-1.15\baselineskip} % workaround for removed rule
+    \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+    \vspace{-0.5\baselineskip} % workaround for removed rule
+  }
+
+  \newcommand{\setchaptertoc}{%
+    \setchapterpreamble{% KOMA-Script command 
+      \dochaptertoc%
+    }
+  }  
+% The KOMA -Script package tocstyle
+% -------------------------------------
+% How to increase the numwidth for a part in ToC?
+% https://tex.stackexchange.com/questions/119849/
+% https://tex.stackexchange.com/questions/63856/how-to-increase-the-numwidth-for-a-part-in-toc
+% With option tocindentauto all widths at the TOCs are calculated by tocstyle.
+\usepackage[tocindentauto, tocgraduated]{tocstyle}
+\usetocstyle{KOMAlike}
+
+\makeatletter
+
+ \renewcommand*{\raggedchapterentry}{\setlength{\@tempdima}{3em}}
+ \renewcommand*\l@part{\bprot@dottedtocline{-1}{1.5em}{4.5em}}
+ \renewcommand*\l@section{\bprot@dottedtocline{1}{1.5em}{3.5em}}
+ \renewcommand*\l@subsection{\bprot@dottedtocline{2}{3.8em}{4em}}
+ \renewcommand*\l@subsubsection{\bprot@dottedtocline{3}{7.0em}{4.1em}}
+ \renewcommand*\l@paragraph{\bprot@dottedtocline{4}{10em}{5em}}
+ \renewcommand*\l@subparagraph{\bprot@dottedtocline{5}{12em}{6em}}
+ \def\@pnumwidth{3em}  % default 1.55
+\makeatother
+  
+\begin{document}
+\setcounter{tocdepth}{-1} % 
+\setcounter{secnumdepth}{4}           % Number subsubsections in the chapters
+\setcounter{parttocdepth}{0} 
+\doparttoc
+\setcounter{minitocdepth}{2} 
+\dominitoc
+\tableofcontents
+
+\setcounter{page}{3000}  
+\setcounter{chapter}{100}
+\setcounter{part}{5080}
+
+\setchaptertoc 
+
+\renewcommand*\partname{Oddíl}
+
+\part{Part I}
+\parttoc
+    \chapter{My chapter I}
+        \section{My first section}  
+          \blindtext
+            \subsection{My first subsection}
+                \blindtext  
+        \section{My second section}
+            \blindtext 
+    \chapter{My chapter II}
+    \chapter{My chapter II}
+    \chapter{My chapter III}
+    \chapter{My chapter IV}
+    \chapter{My chapter V}
+    \chapter{My chapter VI}
+    \chapter{My chapter VII}
+    \chapter{My chapter VIII}
+    \chapter{My chapter IX}
+    \chapter{My chapter X}
+    \chapter{My chapter XI}
+    \chapter{My chapter XII}
+    \chapter{My chapter XIII}
+    \chapter{My chapter XIV}
+    \chapter{My chapter XV}
+    \chapter{My chapter XVI}
+    \chapter{My chapter XVII}
+    \chapter{My chapter XVIII}
+    \chapter{My chapter XIX}
+    \chapter{My chapter XX}
+    \chapter{My chapter XXI}
+    \chapter{My chapter XXII}
+    \chapter{My chapter XXIII}
+    \chapter{My chapter XXIV}
+    \chapter{My chapter XXVI}
+    \chapter{My chapter XXVII}
+    \chapter{My chapter XXVIII}
+    \chapter{My chapter XXIX}
+    \chapter{My chapter XXX}
+\part{Part II}
+\parttoc
+    \chapter{My chapter I}
+        \section{My first section}  
+          \blindtext
+            \subsection{My first subsection}
+                \blindtext  
+        \section{My second section}
+            \blindtext 
+\end{document}

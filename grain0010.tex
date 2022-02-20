@@ -1,0 +1,47 @@
+\documentclass[twocolumn]{scrbook}
+\usepackage{luakoma}
+\usepackage{lualayout}
+\usepackage[nohints]{minitoc}
+\mtcsetrules{minitoc}{off}
+\usepackage{lipsum}
+
+\newcommand{\dochaptertoc}{%
+  \vspace{1.85\baselineskip} % workaround for removed rule
+  \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+  \vspace{-1.85\baselineskip} % workaround for removed rule
+  \setchaptertoc
+  \vspace{-1.15\baselineskip} % workaround for removed rule
+  \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+  \vspace{1.15\baselineskip} % workaround for removed rule
+}
+\newcommand{\setchaptertoc}{%
+  \setchapterpreamble{% KOMA-Script command
+    \dochaptertoc%
+  }}
+
+\begin{document}
+\dominitoc
+\tableofcontents
+
+\setchaptertoc
+\chapter{One}
+\lipsum[1]
+\section{One, one}
+\lipsum[2]
+\subsection{One, one, one}
+\lipsum[3]
+\section{One, two}
+\lipsum[4]
+
+\setchapterpreamble{
+  \dictum{Time for a bon-mot.}% KOMA-Script command
+  \dochaptertoc
+}
+\chapter{Two}
+\lipsum[5]
+\section{Two, one}
+\lipsum[6]
+\section{Two, two}
+\subsection{two, two, one}
+\lipsum[7]
+\end{document}

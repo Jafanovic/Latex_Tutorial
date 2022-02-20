@@ -1,0 +1,31 @@
+\documentclass[english,cdchapter=false]{tudscrreprt}% oder cd=false, um die Abschaltung auszuweiten
+%\usepackage[utf8]{inputenc}% Braucht man seit LaTeX 2018-04-01 nicht mehr.
+\usepackage{babel}
+\usepackage{blindtext}
+
+\KOMAoption{chapterprefix}{true}
+\renewcommand*\raggedchapter{\centering}
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=8\baselineskip]{chapter}
+\setkomafont{chapterprefix}{\normalsize\mdseries}
+
+\renewcommand*{\chapterformat}{%
+  \chapappifchapterprefix{\nobreakspace}\thechapter\autodot%
+  \IfUsePrefixLine{%
+    \par\nobreak\vspace{-\parskip}\vspace{-.6\baselineskip}%
+    \rule{0.9\textwidth}{.5pt}%
+  }{\enskip}%
+}
+
+\renewcommand\chapterlineswithprefixformat[3]{%
+  \MakeUppercase{#2#3}
+}
+
+\begin{document}
+\tableofcontents
+\chapter{Chapter One}
+\textbf{\KOMAScriptVersion}
+\par
+\Blindtext
+\addchap{Chapter without number}
+\Blindtext
+\end{document}

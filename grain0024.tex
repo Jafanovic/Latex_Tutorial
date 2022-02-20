@@ -1,0 +1,33 @@
+% https://tex.stackexchange.com/questions/517015/conflict-between-package-pdfcomment-and-polyglossia-during-compilation-by-lualat
+% https://tex.stackexchange.com/questions/507736/cambria-fonts-not-working
+% https://tex.stackexchange.com/questions/20580/how-to-enable-ligatures-for-emdash-endash-in-luatex
+\documentclass{scrbook}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={TeX}}
+% \setmainfont{Cambria}
+% \setmainfont{Calibri}
+% \setmainfont[Ligatures={TeX,Common}]{Cambria}
+% \setmainfont{TeX Gyre Bonum}  % no sufficient
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Termes}
+% \setsansfont{TeX Gyre Heros}
+% \setmonofont{TeX Gyre Cursor}
+% \setmathfont{TeX Gyre Termes Math}
+% \usepackage{polyglossia}
+% \setmainlanguage{czech}
+% \setmainlanguage{english}
+% \usepackage[czech, english]{babel}
+% \languageattribute{czech}{split}
+
+\usepackage{pdfcomment}   % A user-friendly interface to pdf annotations.
+
+\usepackage{blindtext}
+\listfiles
+\begin{document}
+% \selectlanguage{english}
+  \blinddocument
+  Greek text: Κύκλος γαλακτικός
+  \textsc{Small caps work,} but \textbf{boldface} and \textit{italics} also works.
+
+  Ligatures: fi fj fl ffi gg gy
+\end{document}

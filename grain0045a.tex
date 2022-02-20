@@ -1,0 +1,44 @@
+% https://tex.stackexchange.com/questions/111999/slovak-and-czech-babel-gives-problems-with-cmidrule-and-cline
+
+\documentclass[10pt]{scrbook}
+% \usepackage{luadebug}
+\usepackage[main=czech,shorthands=off]{babel}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+\usepackage{etoolbox}
+% \preto\tabular{\shorthandoff{-}}
+% \preto\siunitx{\shorthandoff{-}}
+
+\usepackage{unicode-math} 
+\usepackage{polynom}
+\usepackage{bm}
+\usepackage[
+  colorlinks=true,
+  pdfencoding=auto, % or unicode
+  psdextra,
+]{hyperref}
+
+
+\begin{document}
+
+\section{Substituční metoda typu  \texorpdfstring{\(\varphi(x) = t\)}{phi(x) = t}}\label{mai:IchapVIIsecIIIssecIII} 
+Number with siunitx \num{1e-9}
+
+\begin{equation*}
+  \polylongdiv[style=C,div=:]{x^4+3x^3-3x^2+3x}{x^2+1}
+\end{equation*}
+
+\section[\texorpdfstring{Math symbols $\sum, \int$}%
+                        {Math symbols \sum, \int}]%
+        {Math symbols $\bm{\sum, \int}$}  % note use of \bm ("bold math")
+
+\begin{tabular}{ccc}
+A & B & C \\
+\cmidrule{2-3}
+A & B & C \\
+\cline{1-2}
+A & B & C \\
+\end{tabular}
+
+\end{document}

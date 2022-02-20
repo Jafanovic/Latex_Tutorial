@@ -1,0 +1,18 @@
+\documentclass{scrbook}
+  \usepackage{xr-hyper}
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
+
+\externaldocument[A-]{grain0053a}[grain0053a.pdf]% <- full or relative path
+
+
+\begin{document}
+  As was shown in Eq.~(\ref{A-eq:1}) is it
+  ... or in Eq.~(\ref{A-eq:2}) is ...
+  \begin{equation}
+    \mathrm{e}^{i\pi}-1=0 \label{eq:x}
+  \end{equation}
+\end{document}

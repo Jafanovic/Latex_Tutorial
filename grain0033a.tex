@@ -1,0 +1,39 @@
+% https://tex.stackexchange.com/questions/564716/using-package-resizegather-leads-to-extra-vertical-space-inside-mdframed-equatio/564719#564719
+\documentclass{scrbook}
+
+  \usepackage{mdframed}
+  \usepackage{amsmath, nccmath}
+  \usepackage{resizegather}    
+  \usepackage{blindtext}
+
+  \usepackage{etoolbox}
+    \newenvironment{myequ}{%
+    \useshortskip\par\centering$\displaystyle}
+    {$\useshortskip\par}
+
+   %  https://tex.stackexchange.com/questions/298211/using-multline-or-equation-based-on-a-boolean-flag
+   \newenvironment{myeq}{\useshortskip\equation}{\endequation}
+
+  \begin{document}
+  \chapter{My title test 7}
+    \blindtext  
+    \begin{mdframed}
+      \useshortskip
+      \begin{equation}\label{mai:eq1}
+        \boxed{\int f(x) dx = F(x) + c}
+      \end{equation}
+    \end{mdframed}
+
+    \blindtext
+    \begin{mdframed}
+      \begin{myeq}\label{mai:eq2}
+        \boxed{\int f(x) dx = G(x) + c}
+      \end{myeq}
+    \end{mdframed}     
+    \blindtext
+    \begin{mdframed}
+      \begin{equation}\label{mai:eq3}
+        \boxed{\int f(x) dx = H(x) + c}
+      \end{equation}
+    \end{mdframed}  
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\hypersetup{%
+  % pdfpagelabels = true,
+  % bookmarks=true,         % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=blue!80,      % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,          % color of external links
+    pdfencoding=unicode,
+    psdextra,               % short names are available. Then \geq can directly be used
+                            % instead of \textgeq.
+    pdfauthor={Jaroslav Fait},
+    pdftitle={Technická knižnice inženýra},
+    pdfkeywords={Math, Physics, Electronics}, % list of keywords
+}
+\usepackage{siunitx}
+
+\externaldocument[A-]{grain0049a}[grain0049a.pdf]% <- full or relative path
+\begin{document}
+  \setcounter{equation}{5}
+
+  As was shown in Eq.~(\ref{A-eq:1}) is it
+  ... or in Eq.~(\ref{A-eq:2}) is ...
+  \begin{equation}
+    \mathrm{e}^{i\pi}-1=0 \label{eq:x}
+  \end{equation}
+\end{document}

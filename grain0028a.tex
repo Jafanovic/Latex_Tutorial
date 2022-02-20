@@ -1,0 +1,166 @@
+% https://tex.stackexchange.com/questions/520667/fonstspec-package-creates-character-consists-of-the-seperate-symbol-and-accent
+% https://tex.stackexchange.com/questions/468795/best-way-of-using-the-full-range-of-full-fonts-styles-faces-for-latin-modern-rom
+% https://tex.stackexchange.com/questions/186796/neo-euler-wont-display-greek-letters?noredirect=1&lq=1
+\documentclass[
+    fontsize=10pt,
+    twocolumn,
+    open=any, 
+    titlepage=false, 
+    chapterprefix=true
+]{scrbook}
+
+\usepackage[
+    % showframe=true,
+    verbose=true,                   % displays the parameter results on the terminal
+    paperwidth  = 158mm,            % 
+    paperheight = 210mm,            %
+    % landscape,                    %
+    includehead, includefoot,       % include the head and foot into total body
+    scale=1.0,                      %
+    nomarginpar,                    % shrinks spaces for marginal notes to 0pt,
+    left=3pt, right=3pt,            %
+    top=2pt, bottom=9pt,            %
+    headsep=2pt,                    %
+    headheight=12pt,                % At least 11.0pt needed!! 
+    showframe=false, nofoot,        % 
+    % noheadfoot=true,              %  
+    heightrounded,                  % better use it
+]{geometry} 
+
+% Additional Options
+    \usepackage{mathtools}
+    \usepackage{unicode-math}
+    \usepackage{fontspec}
+    %fontspec options: 
+    \setmainfont{TeX Gyre Pagella}[
+        Scale=1.0,
+        Ligatures={Common, Discretionary, TeX}]
+    \setmathfont[math-style=upright]{Neo Euler}
+
+\begin{document}
+\setlength\parindent{0pt}
+    \setmainfont{TeX Gyre Adventor}
+    \section{TEX Gyre Adventor}
+    Příliš žluťoučký kůň úpěl ďábelské ódy! \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Bonum}
+    \section{TeX Gyre Bonum}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Chorus}
+    \section{TeX Gyre Chorus}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Heros}
+    \section{TeX Gyre Heros}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Pagella}
+    \section{TeX Gyre Pagella}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Schola}
+    \section{TeX Gyre Schola}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+    \newpage
+
+    \setmainfont{TeX Gyre Termes}
+    \section{TeX Gyre Termes}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!  \newline
+
+    Pokračujme v procesu zobecňování. Existují nějaké další rovnice, které neumíme vyřešit? Ano,
+    existují. Například nelze vyřešit rovnici \(b=2^\frac{1}{2} =\sqrt{2}\). Není možné najít takové
+    racionální číslo (zlomek), jehož druhá mocnina je rovna 2. V moderní době je na tuto otázku
+    velmi snadná odpověď'. Známe desetinný systém, takže nám nedělají problémy nekonečná desetinná
+    čísla jako způsob aproximace druhé odmocniny ze 2. Historicky to však byl velký problém pro
+    staré Řeky. Skutečně přesná deﬁnice toho, o co tu jde, vyžaduje znát něco z podstaty spojitosti
+    a uspořádanosti, a to je na tomto místě právě nejtěžší krok v procesu zobecňování. Formálně a
+    velmi přesně to provedl. Avšak, bez obav o matematickou přesnost, můžeme snadno
+    pochopit, co zamýšlíme provést, tj. aproximovat takové číslo celou posloupností desetinných
+    zlomků (neboť každé konečné desetinné číslo je racionální číslo), která se stále více a více
+    přibližuje k hledanému výsledku. To nám pro naše účely postačí, umožní nám to manipulovat s
+    iracionálními čísly i jejich výpočet (jako například čísla \(\sqrt{2}\)) s libovolnou přesností.
+\end{document}

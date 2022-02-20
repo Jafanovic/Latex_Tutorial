@@ -1,0 +1,51 @@
+% https://tex.stackexchange.com/questions/415369/tcolorbox-theorem-numbering
+% See also page 105 in the tcolorbox manual. 
+\documentclass{scrbook}
+\usepackage{amsmath,amsthm,amssymb,parskip}
+\usepackage[margin=1in]{geometry}
+\usepackage{titling,multicol}
+\usepackage[most]{tcolorbox}
+\usepackage{csquotes}
+\usepackage{graphicx,float}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\newtcbtheorem{mytheo}{Příklad}{colback=purple!5,colframe=blue!100!,fonttitle=\bfseries}{exam}
+
+\newtcolorbox[
+    auto counter,
+    number within=section
+  ]{pabox}[2][]{%
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=Příklad\smallskip~\thetcbcounter: #2,#1
+  }
+
+
+\begin{document}
+\chapter{Kapitola 1}
+\begin{mytheo*}{}
+  text...
+\end{mytheo*}
+
+See \ref{exam:foo} 
+
+\begin{mytheo}{Foo}{foo}
+  text...
+\end{mytheo}
+
+\begin{mytheo}{Foo}{fooo}
+  text...
+\end{mytheo}
+
+\section{Ahoj}
+  \begin{pabox}[label={exam:001},nameref={Aplikace \(\int x^2\) tvaru}]{Hrátky s \Large\(\int x^2\)}
+    This is a tcolorbox.
+  \end{pabox}
+    This box is my automatically numbered with \ref{exam:001} on page
+    \pageref{exam:001}.
+    The box is titled \enquote{\nameref{exam:001}}.
+
+  
+\end{document}

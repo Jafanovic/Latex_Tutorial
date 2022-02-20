@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+
+\externaldocument[A-]{grain0050a}[grain0050a.pdf]% <- full or relative path
+
+\listfiles
+\begin{document}
+  As was shown in Eq.~(\ref{A-eq:1}) is it
+  ... or in Eq.~(\ref{A-eq:2}) is ...
+  \begin{equation}
+    \mathrm{e}^{i\pi}-1=0 \label{eq:x}
+  \end{equation}
+
+  Maxwell's velocity distribution is shown in \ref{A-fig:048}
+\end{document}

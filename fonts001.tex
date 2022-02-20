@@ -1,0 +1,28 @@
+% https://tex.stackexchange.com/questions/355104/tex-luatex-xetex-fontspec-support-for-opentype-variable-fonts
+% https://keybase.pub/rawsh/LinuxStuff/fonts/
+%
+% Windows: 
+    % 1.  Open the folder where your newly downloaded fonts are (extract the zip. files) 
+
+    % 2.  If the extracted files are spread across many folders just do CTRL+F and type . ttf or .
+    %     otf and select the fonts you want to install (CTRL+A marks all of them) 
+
+    % 3.  Use the right mouse click and select “Install”.
+
+\documentclass[a4paper,12pt]{scrbook}
+\usepackage{fontspec}
+    \defaultfontfeatures{RawFeature={+axis={wght=100}}}
+    \setmainfont[
+        ItalicFont=SourceSansVariable-Italic.otf,
+        BoldFont=SourceSansVariable-Roman.otf,
+        BoldItalicFont=SourceSansVariable-Italic.otf,
+        BoldFeatures={RawFeature={+axis={wght=900}}},
+        BoldItalicFeatures={RawFeature={+axis={wght=900}}}
+    ]{SourceSansVariable-Roman.otf}
+
+\begin{document}
+    \par the quick brown fox jumps over the lazy dog.
+    \par\textit{the quick brown fox jumps over the lazy dog.}
+    \par\textbf{the quick brown fox jumps over the lazy dog.}
+    \par\textbf{\textit{the quick brown fox jumps over the lazy dog.}}
+\end{document} 

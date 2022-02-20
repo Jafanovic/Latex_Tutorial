@@ -1,0 +1,45 @@
+% https://tex.stackexchange.com/questions/152358/animations-in-latex
+\documentclass[preview,border={10pt 0pt 10pt 10pt}]{standalone}
+
+% The version of LATEX released in Fall 2019 incorporates all of this package’s functionality (and
+% more) into the LATEX kernel itself. As a result, there is no longer a need for the filecontents
+% package. Please use the new, built-in filecontents environment instead.
+\usepackage{filecontents}
+    %% This is your file to be animated
+\begin{filecontents*}{lsystems.tex}  
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}\PreviewEnvironment{tikzpicture}
+\usetikzlibrary{lindenmayersystems}
+\pgfdeclarelindenmayersystem{A}{
+\symbol{F}{\pgflsystemstep=0.6\pgflsystemstep\pgflsystemdrawforward}
+\rule{A->F[+A][-A]}
+}
+\begin{document}
+\foreach \n in {1,...,8} {
+\begin{tikzpicture}[scale=10,rotate=90]
+\draw (-.1,-.2) rectangle (.4,0.2);
+\draw
+    [blue,opacity=0.5,line width=0.1cm,line cap=round]
+    l-system [l-system={A,axiom=A
+    ,order=\n,angle=45,step=0.25cm}];
+\end{tikzpicture}
+}
+
+\end{document}
+\end{filecontents*}
+%
+\immediate\write18{pdflatex lsystems}
+
+%% convert to GIF animation. Uncomment following line to have a gif animation in the same folder.
+%\immediate\write18{convert -delay 10 -loop 0 -density 400 -alpha remove lsystems.pdf lsystems.gif}
+%%
+
+\usepackage{graphicx}
+\usepackage{animate}
+\begin{document}
+\begin{preview}
+%\animategraphics[controls,autoplay,loop,scale=<integer>]{<frame rate>}{<PDF filename without extension>}{<left blank>}{<left blank>}
+\animategraphics[controls,autoplay,loop,scale=1]{2}{lsystems}{}{}
+\end{preview}
+\end{document}

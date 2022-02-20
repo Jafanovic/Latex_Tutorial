@@ -1,0 +1,277 @@
+\documentclass[12pt,letterpaper,twoside,final,openright]{book}
+\usepackage{titletoc}
+\usepackage{etoc}
+
+%---------------------------------------
+\usepackage{lipsum,mwe}
+\newcommand{\testt}{%
+\lipsum[1]
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline 
+bla & foo \\ 
+\hline 
+foo & bla \\ 
+\hline 
+\end{tabular} 
+\caption{Just a table}
+\end{table}}
+\newcommand{\testf}{%
+\lipsum[1]
+\begin{figure}
+\includegraphics{example-image-a}
+\caption{Just a figure}
+\end{figure}}
+%----------------------------------------
+
+\let\ppcleardoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{%
+\clearpage{\pagestyle{empty}\ppcleardoublepage}}
+\newcounter{ppage}
+\newcommand{\evolume}{\setcounter{ppage}{\value{page}}}
+\newcommand{\setpage}{\stepcounter{ppage}%
+\setcounter{page}{\value{ppage}}}
+
+\newcommand{\vtableofcontents}[2][subsection]{%
+\begingroup
+\etocsettagdepth{VolumeI}{none}
+\etocsettagdepth{VolumeII}{none}
+\etocsettagdepth{VolumeIII}{none}
+\etocsettagdepth{VolumeIV}{none}
+\etocsettagdepth{#2}{#1}
+\tableofcontents
+\endgroup}
+
+\newcommand{\vshorttoc}[3][chapter]{%
+\begingroup
+\etocsetstyle {part}
+{}
+{\medskip\noindent\relax}
+{\bfseries\large\makebox[2cm]{\partname\ \etocnumber\ }%
+\etocname\par\nobreak\medskip}
+{}
+\etocsetstyle {chapter}
+{}
+{}
+{\bfseries\normalsize\makebox[3cm]{\chaptername\ \etocnumber\ }%
+\etocname\par}
+{}
+\etocsettagdepth{VolumeI}{none}
+\etocsettagdepth{VolumeII}{none}
+\etocsettagdepth{VolumeIII}{none}
+\etocsettagdepth{VolumeIV}{none}
+\etocsettagdepth{#2}{#1}
+\etocsettocstyle{\vspace{1cm}{%
+\centering\LARGE\bfseries Contents of volume #3\par\nobreak\medskip}}{}
+\tableofcontents
+\endgroup}
+
+\newcommand{\vlists}[1]{%
+\startlist[#1]{lof}
+\printlist[#1]{lof}{}{%
+    \chapter*{\listfigurename}%
+      \markboth{\MakeUppercase\listfigurename}%
+              {\MakeUppercase\listfigurename}}
+\startlist[#1]{lot}
+\printlist[#1]{lot}{}{%
+    \chapter*{\listtablename}%
+      \markboth{%
+          \MakeUppercase\listtablename}%
+         {\MakeUppercase\listtablename}}}
+
+\newcommand{\vstoplist}[1]{%
+\stoplist[#1]{lof}
+\stoplist[#1]{lot}}
+
+\begin{document}
+   % DOCUMENT 
+\begin{titlepage}
+\huge\bfseries
+\ \vfil
+Document
+\end{titlepage}
+
+   % Volume I
+\begin{titlepage}
+\huge\bfseries
+\ \vfil
+Volume I
+\end{titlepage}
+
+\etocdepthtag.toc{VolumeI}
+
+
+\frontmatter
+  % Management summary chapter
+  some test
+
+  \vtableofcontents{VolumeI}
+  %\newpage %  and may be a header
+  \vshorttoc{VolumeII}{II}
+  \vshorttoc{VolumeIII}{III}
+  {\let\chaptername\appendixname\vshorttoc{VolumeIV}{IV}}
+
+  \vlists{VolumeI}
+
+
+\mainmatter
+\setpage
+
+  \part{VolumeI}
+  \chapter{test}
+  \section{One}
+  \testf
+  \subsection{Test On}
+  \cite{big}
+  \testt
+  \chapter{test}
+  \testt
+  \chapter{test}
+  \testf\testf
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{mybiblio}{}
+\evolume
+
+  % Volume II
+
+\begin{titlepage}
+\huge\bfseries
+\ \vfil
+Volume II
+\end{titlepage}
+
+\etocdepthtag.toc{VolumeII}
+
+\frontmatter
+  % Management summary chapter
+  some test
+
+  \vtableofcontents{VolumeII}
+  %\newpage
+  \vshorttoc{VolumeII}{I}
+  \vshorttoc{VolumeIII}{III}
+  {\let\chaptername\appendixname\vshorttoc{VolumeIV}{IV}}
+
+  \vstoplist{VolumeI}
+  \vlists{VolumeII}
+
+\mainmatter
+\setpage
+
+  \part{VolumeII}
+  \chapter{test}
+  \section{One}
+  \testt
+  \subsection{Test On}
+  \testt
+  \chapter{test}
+  \cite{small}
+  \testf
+  \chapter{test}
+  \testf\testt
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{mybiblio}{}
+\evolume
+
+  % Volume III
+
+\begin{titlepage}
+\huge\bfseries
+\ \vfil
+Volume III
+\end{titlepage}
+
+\etocdepthtag.toc{VolumeIII}
+
+\frontmatter
+  % Management summary chapter
+  some test
+
+  \vtableofcontents{VolumeIII}
+  %\newpage
+  \vshorttoc{VolumeII}{I}
+  \vshorttoc{VolumeIII}{II}
+  \vshorttoc{VolumeIV}{IV}
+
+  \vstoplist{VolumeII}
+  \vlists{VolumeIII}
+
+\mainmatter
+\setpage
+
+  \part{VolumIII.a}
+  \chapter{test}
+  \section{One}
+  \testf
+  \subsection{Test On}
+  \testt
+  \chapter{test}
+  \testt
+  \chapter{test}
+  \cite{small}
+  \testf
+
+  \part{VolumeIII.b}
+  \chapter{test}
+  \chapter{test}
+  \section{One}
+  \testf
+  \subsection{Test On}
+  \testt
+  \chapter{test}
+  \cite{big}
+  \testt\testt
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{mybiblio}{}
+\evolume 
+
+\appendix
+  % Volume IV
+
+\begin{titlepage}
+\huge\bfseries
+\ \vfil
+Volume IV
+\end{titlepage}
+
+\etocdepthtag.toc{VolumeIV}
+
+\frontmatter
+  % Management summary chapter
+  some test
+
+  \vtableofcontents{VolumeIV}
+  %\newpage
+  \vshorttoc{VolumeII}{I}
+  \vshorttoc{VolumeIII}{II}
+  \vshorttoc{VolumeIV}{III}
+
+  \vstoplist{VolumeIII}
+  \vlists{VolumeIV}
+
+\mainmatter
+\setpage
+
+  \part{Appendices}
+  \chapter{test}
+  \testt
+  \chapter{test}
+  \testt
+  \chapter{test}
+  \testf
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{mybiblio}{}
+
+\end{document}

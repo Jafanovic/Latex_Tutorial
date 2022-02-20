@@ -1,0 +1,211 @@
+\PassOptionsToPackage{
+    % showframe=true,
+    verbose=true,                   % displays the parameter results on the terminal
+    paperwidth  = 447pt,            % 158mm 
+    paperheight = 595pt,            % 210mm 
+    % landscape,                    %
+    includehead, includefoot,       % include the head and foot into total body
+    scale=1.0,                      %
+    nomarginpar,                    % shrinks spaces for marginal notes to 0pt,
+                                    % \marginparwidth=0pt and \marginparwidth=0pt
+    left=3pt, right=3pt,            % Package geometry Warning: Over-specification in `v'-direction.
+    top=0pt, bottom=11pt,           % Package geometry Warning: Over-specification in `h'-direction.
+    % textwidth=440pt,
+    % textheight=560pt,
+    headsep=2pt,                    %
+    headheight=12pt,                % At least 11.0pt needed!! 
+    showframe=false,                %
+    nofoot,                         % noheadfoot=true, 
+    heightrounded,                  % better use it
+  }{geometry} 
+
+\documentclass[fontsize=10pt,open=any,twocolumn]{scrbook}% needs version 3.27 or newer
+\usepackage{lualayout}
+        \usepackage{blindtext}
+        \usepackage{scrwfile}% avoid trouble with the limited number of write handles
+        \usepackage{xpatch}
+        \usepackage[skins,breakable]{tcolorbox}
+
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% °°°°°               TABLE OF CONTENT -TOC                                                   °°°°°°
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+% https://tex.stackexchange.com/a/359758
+% https://tex.stackexchange.com/a/502077
+% https://tex.stackexchange.com/questions/516093
+% https://tex.stackexchange.com/questions/430594/use-minitoc-with-koma-script-scrbook/502856
+\makeatletter
+
+  \newif\ifusechaptertoc                % Switch to tell \addtocentrydefault to not only make entries
+                                        % to the toc-file but also to the current section-toc-file
+  \newcommand*{\chaptertoc}[2][\thechapter]{  % new command to generate and show a chapter toc
+    \usechaptertoctrue                  % switch on chapter-toc-entries
+    \edef\ext@chaptoc{tcc#1}            % extension of the chapter-toc-file, e.g., tcc1
+    \DeclareNewTOC{\ext@chaptoc}        % declare a new toc file
+    %\addsec*{Contents}                 % header of the chaptertoc
+    \setchapterpreamble{%
+      \begin{tcolorbox}[
+        % blanker,
+        % colback=yellow!10!black,
+        % colupper=white,
+        % colframe=green!65!black,
+        % width=\textwidth,enlarge left by=0.36\textwidth,
+        before skip=6pt,
+        enforce breakable,         % breakable,
+        compress page,
+        enhanced
+        ]
+        % \hrulefill\par
+        \value{tocdepth}=\sectiontocdepth  % we want entries down to subsection
+        \listoftoc*{\ext@chaptoc}       % show the toc without header
+      \end{tcolorbox}%
+      % \par\nobreak\noindent\hrulefill\par % \par\bigskip\nobreak\noindent\hrulefill\par
+      % \bigskip\noindent\ignorespaces % add some vertical space after the toc and do not indent 
+    }                                   % the following text
+  }
+  \xapptocmd\addtocentrydefault{        % patch the KOMA-Script's generic toc entry generator
+    \ifusechaptertoc                    % if chapter toc entries should be generated
+      \Ifstr{#1}{chapter}{}
+        {\expandafter\tocbasic@addxcontentsline\expandafter{\ext@chaptoc}{#1}{#2}{#3}}% do it
+    \fi
+  }{}{}
+  \xpretocmd\chapter{\usechaptertocfalse}{}{} % automatically switch of chapter toc entries at start 
+                                              % of every \chapter
+\makeatother
+
+\newcommand\setchaptertoc[1][]{%
+  \Ifstr{#1}{}
+    {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc}}
+    {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc[#1]}}%
+}
+%-------------------------------------------------------------------------------------------------
+\setcounter{chapter}{100}
+\setcounter{tocdepth}{\partnumdepth}% depth of TOC
+\begin{document}
+\tableofcontents
+
+    \part{My Part I}
+
+    \setchaptertoc
+        \chapter{My big chapter I}
+            \section{My 1st section}
+                \blindtext
+            \subsection{My 1st subsection}
+                \blindtext
+            \subsection{My 2nd subsection}
+                \blindtext
+            \subsection{My 3rd subsection}
+                \blindtext
+            \subsection{My 4th subsection}
+                \blindtext
+            \subsection{My 5th subsection}
+                \blindtext
+            \subsection{My 6th subsection}
+                \blindtext
+            \subsection{My 7th subsection}
+                \blindtext
+            \subsection{My 8th subsection}
+                \blindtext
+            \subsection{My 9th subsection}
+                \blindtext
+            \subsection{My 10th subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+        \section{My second section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext     
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext    
+        \section{My third section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My second subsection}
+                \blindtext     
+            \subsection{My third subsection}
+                \blindtext
+            \subsection{My fourth subsection}
+                \blindtext       
+        \section{My fourth section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext     
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext    
+        \section{My fifth section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My second subsection}
+                \blindtext     
+            \subsection{My third subsection}
+                \blindtext
+            \subsection{My fourth subsection}
+                \blindtext  
+        \section{My sixth section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My second subsection}
+                \blindtext     
+            \subsection{My third subsection}
+                \blindtext
+            \subsection{My fourth subsection}
+                \blindtext    
+        \section{My seventh section}
+                \blindtext
+            \subsection{My first subsection}
+                \blindtext
+            \subsection{My second subsection}
+                \blindtext     
+            \subsection{My third subsection}
+                \blindtext
+            \subsection{My fourth subsection}
+                \blindtext           
+\end{document}

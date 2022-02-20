@@ -1,0 +1,101 @@
+% https://tex.stackexchange.com/questions/374189/creating-new-entry-style-in-tocbasic
+\documentclass[fontsize=11pt]{scrreprt}
+%\documentclass[11pt]{report}
+%\usepackage{tocbasic}% with a KOMA-Script class do not load explicitly
+
+\usepackage[left=25mm,right=25mm,top=8.4mm,bottom=10.7mm%
+    ,includeheadfoot,headsep=15.4mm,marginparwidth=18mm,marginparsep=4mm]%
+    {geometry}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\usepackage{blindtext}
+
+\makeatletter
+\def\@dotsep{0.072}
+\newcommand*{\skillmon@chapter@dotfill}{%
+    \TOCLineLeaderFill[\textbf{.}]%
+}
+\newcommand*{\skillmon@section@dotfill}{%
+    \TOCLineLeaderFill%
+}
+\newcommand*\skillmon@pagenumberbox[1]{\makebox{#1}}
+\newcommand*\skillmon@numsep{0pt}% <- adjust this to set the minimum space between the numbers and the titles
+
+\DeclareTOCStyleEntry[%
+    ,beforeskip=1.15em plus 1pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@chapter@dotfill%
+    ,entryformat=\textbf%
+    ,indent=0pt%
+    ,level=0%
+    ,pagenumberbox=\skillmon@pagenumberbox%
+]{tocline}{chapter}
+\DeclareTOCStyleEntry[%
+    ,beforeskip=0pt plus .2pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@section@dotfill%
+    ,indent=1.3em%
+    ,pagenumberbox=\skillmon@pagenumberbox%
+]{tocline}{section}
+\DeclareTOCStyleEntry[%
+    ,beforeskip=0pt plus .2pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@section@dotfill%
+    ,indent=3.38em%
+    ,pagenumberbox=\skillmon@pagenumberbox%
+]{tocline}{subsection}
+\DeclareTOCStyleEntry[%
+    ,beforeskip=0pt plus .2pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@section@dotfill%
+    ,indent=6.38em%
+    ,pagenumberbox=\skillmon@pagenumberbox%
+]{tocline}{subsubsection}
+\DeclareTOCStyleEntry[%
+    ,beforeskip=0pt plus .2pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@section@dotfill%
+    ,indent=1.5em%
+    ,pagenumberbox=\relax%
+]{tocline}{table}
+\DeclareTOCStyleEntry[%
+    ,beforeskip=0pt plus .2pt%
+    ,dynnumwidth=true%
+    ,numwidth=0pt,% <- added
+    ,numsep=\skillmon@numsep%
+    ,linefill=\skillmon@section@dotfill%
+    ,indent=1.5em%
+    ,pagenumberbox=\skillmon@pagenumberbox%
+]{tocline}{figure}
+\makeatother
+
+\begin{document}
+\tableofcontents
+\listoftables
+\listoffigures
+\blinddocument
+\addxcontentsline{lot}{table}[1.1]{example of table}
+\addxcontentsline{lot}{table}[1.2]{example of table}
+\addxcontentsline{lof}{figure}[1.1]{example of figure}
+\addxcontentsline{lof}{figure}[1.2]{example of figure}
+\blinddocument
+\addxcontentsline{lot}{table}[2.1]{example of table}
+\addxcontentsline{lot}{table}[2.2]{example of table}
+\addxcontentsline{lof}{figure}[2.1]{example of figure}
+\addxcontentsline{lof}{figure}[2.2]{example of figure}
+\blinddocument
+\addxcontentsline{lot}{table}[3.1]{example of table}
+\addxcontentsline{lot}{table}[3.2]{example of table}
+\addxcontentsline{lof}{figure}[3.1]{example of figure}
+\addxcontentsline{lof}{figure}[3.2]{example of figure}
+\end{document}

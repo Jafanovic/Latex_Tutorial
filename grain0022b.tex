@@ -1,0 +1,20 @@
+% Comparing koma variable to string
+%-----------------------------------
+% https://tex.stackexchange.com/questions/287405/comparing-koma-variable-to-string
+\documentclass{scrlttr2}
+\newkomavar{abc}
+\newkomavar{xyz}
+\setkomavar{xyz}{yes}
+
+\begin{document}
+\usekomavar[\ifstr]{xyz}{yes}
+  {\setkomavar{abc}{yes}}% true part
+  {\setkomavar{abc}{yeah}}% false part
+\usekomavar{abc}
+
+\bigskip
+\usekomavar[\ifstr]{xyz}{other}
+  {\setkomavar{abc}{true}}% true part
+  {\setkomavar{abc}{false}}% false part
+\textbf{\usekomavar[\MakeUppercase]{abc}}
+\end{document}

@@ -1,0 +1,32 @@
+% Issue:
+% -------
+% Package lualatex-math Warning: I've expected \MT_cramped_internal:Nn to have
+% (lualatex-math)                the meaning
+% (lualatex-math)                macro:#1#2->\sbox \z@ {$\m@th
+% (lualatex-math)                #1\nulldelimiterspace =\z@ \radical \z@
+% (lualatex-math)                {#2}$}\ifx #1\displaystyle \dimen@ =\fontdimen
+% (lualatex-math)                8\textfont 3\advance \dimen@ .25\fontdimen
+% (lualatex-math)                5\textfont 2\else \dimen@ =1.25\fontdimen 8\ifx
+% (lualatex-math)                #1\textstyle \textfont \else \ifx
+% (lualatex-math)                #1\scriptstyle \scriptfont \else
+% (lualatex-math)                \scriptscriptfont \fi \fi 3\fi \advance \dimen@
+% (lualatex-math)                -\ht \z@ \ht \z@ =-\dimen@ \box \z@ ,
+% (lualatex-math)                but it has the meaning
+% (lualatex-math)                macro:#1#2->{\ensuremath {\use:c
+% (lualatex-math)                {cramped\cs_to_str:N #1}#2}}.
+
+\documentclass{scrbook}
+% mathtools package loads the amsmath package automatically
+\usepackage{mathtools}  
+% https://tex.stackexchange.com/questions/547150/latex-command-is-already-defined-error 
+% load math font packages such as amssymb, dsfont, mathrsfs and wasysym before loading unicode-math
+% \usepackage{amssymb, amsthm, amsbsy}
+% % Experimental Unicode mathematical typesetting: The unicode-math package
+\usepackage{unicode-math} 
+% \usepackage{lualatex-math} 
+
+% \usepackage{unicode-math}
+% \usepackage{mathtools}
+\begin{document}
+Foo.
+\end{document}

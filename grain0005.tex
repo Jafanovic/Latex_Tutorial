@@ -1,0 +1,12 @@
+\documentclass{scrbook}
+\usepackage{showframe}
+\usepackage{layouts}
+\usepackage{blindtext}% dummy text
+\areaset[0]{30mm}{30mm}
+\begin{document}
+\blinddocument% empty header
+\markboth
+  {My header entry on even pages}
+  {My header entry on odd pages}
+\blinddocument% header with own entries
+\end{document}

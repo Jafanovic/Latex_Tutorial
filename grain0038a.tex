@@ -1,0 +1,63 @@
+\documentclass{scrbook}
+\usepackage{amsmath,amsthm,amssymb,parskip}
+\usepackage[most]{tcolorbox}
+  % https://tex.stackexchange.com/questions/566094/
+  \makeatletter
+  \xpatchcmd\tcb@theo@title
+    {\hangindent\wd\z@\hangafter=1}
+    {}
+    {}{\fail}
+  \makeatother
+
+\usepackage{blindtext}
+
+\newtcbtheorem[auto counter,number within=chapter]{mathexam}{Homework}{%
+    % lefttitle=2em,
+    fonttitle=\itshape, % \bfseries
+    % before=\par\medskip\noindent,
+    parbox=false,
+    breakable,
+    vfill before first=true,
+    enhanced,
+  }{mai}
+ 
+\newtcolorbox{bigequbox}{
+  enhanced jigsaw,
+  colback=red!5!white,
+  colframe=red!75!black,
+  left=1pt,
+  right=1pt,
+}
+
+\begin{document}
+  \begin{mathexam}{%
+    \blindtext}{exam117}
+    \blindtext
+    \begin{align}
+      \frac{dx}{dt} &= 2t + 1 \qquad x(0) = x_0.  \nonumber \\ 
+      x(t)          &= t^2 + t + C,                         \\ 
+      x(t)          &= t^2+t+x_0.                 
+    \end{align}
+    \blindtext
+\end{mathexam}  
+
+\begin{tcolorbox}[fontlower=\sffamily\bfseries]
+  This is a \textbf{tcolorbox}.
+  \tcblower
+  This is the lower part.
+  \begin{align}
+    \frac{dx}{dt} &= 2t + 1 \qquad x(0) = x_0.  \nonumber \\ 
+    x(t)          &= t^2 + t + C,                         \\ 
+    x(t)          &= t^2+t+x_0.                 
+  \end{align}
+\end{tcolorbox}
+
+\begin{bigequbox}
+  \begin{align}
+    \frac{dx}{dt} &= 2t + 1 \qquad x(0) = x_0.  \nonumber \\ 
+    x(t)          &= t^2 + t + C,                         \\ 
+    x(t)          &= t^2+t+x_0.                 
+  \end{align}
+\end{bigequbox}
+
+\end{document}

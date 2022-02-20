@@ -1,0 +1,39 @@
+
+% KOMA script
+% https://tex.stackexchange.com/questions/73141/why-should-i-not-use-the-koma-script-classes?rq=1
+% https://tex.stackexchange.com/questions/541766/latex-error-file-scrpage2-sty-not-found
+\documentclass[10pt,chapterprefix=true]{scrbook}
+
+\areaset{500pt}{550pt}
+
+\setkomafont{disposition}{\normalfont\bfseries}
+\addtokomafont{chapterprefix}{\huge}
+\addtokomafont{chapter}{\Huge}
+
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-100pt}}
+\renewcommand*{\chapterheadendvskip}{\vspace{40pt}}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\@@makechapterhead}{.5\baselineskip}{20\p@}{}{}
+\makeatother
+
+\usepackage[markuppercase]{scrlayer-scrpage}
+\clearscrheadfoot
+\ohead{\pagemark}
+\ihead{\headmark}
+\cfoot[\pagemark]{}
+\pagestyle{scrheadings}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\chapter{foo}
+
+\section{foobar}
+
+\lipsum[1-12]
+
+\end{document}

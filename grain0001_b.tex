@@ -1,0 +1,48 @@
+\documentclass{scrbook}
+% \usepackage{amsmath}
+% \usepackage{hyperref} 
+
+\usepackage{luakoma}
+\usepackage{lualayout}
+\usepackage{luamath} 
+
+
+\begin{document}
+%
+% \input{../src/MAI/exam/exam040.tex}
+Dosadíme-li získané hodnoty do třetí rovnice (dá to trochu práce), dostáváme obecnou  rovnici
+roviny \(\varrho\)
+\begin{subequations}\label{mai:eq041}
+  \begin{equation}
+    ax + by + cz + d= 0,  \label{mai:eq041a}
+  \end{equation}
+  \begin{equation}
+    a = u_2v_3 - u_3v_2, \qquad 
+    b = u_3v_1 - u_1v_3, \qquad 
+    c = u_1v_2 - u_2v_1, \label{mai:eq041b}
+  \end{equation}
+  \begin{equation}
+    d = (u_2v_3 - u_3v_2)x_A - 
+        (u_3v_1 - u_1v_3)y_A - 
+        (u_1v_2 - u_2v_1)z_A. \label{mai:eq041c}
+  \end{equation}
+\end{subequations}
+
+\begin{equation}\label{fyz:eq252}
+  \mathrm{grad}\,T =\nabla T = \left(\pder{T}{x},\, \pder{T}{y},\,\pder{T}{z} \right)
+  \footnotemark
+\end{equation}
+\footnotetext{V naší symbolice představuje výraz \((a, b, c)\) vektor se složkami \(a\), \(b\),
+\(c\). Použijeme-li jednotkové vektory $\vec{i},\,\vec{j},\,\vec{k}$, můžeme psát
+$$\mathrm{grad}\,T=\nabla T = \vec{i}\pder{T}{x} + \vec{j}\pder{T}{y} + \vec{k}\pder{T}{z}$$}
+
+\begin{figure}[ht!]  %\ref{fyz:fig133}
+  \centering
+  \caption{Standardní diagram barevnosti (chromatický diagram \textbf{CIE 
+   1931}\protect\footnotemark) 
+          (\cite[s.~468]{Feynman01})}
+  \label{fyz:fig133}
+\end{figure}
+\footnotetext{Je jeden z prvních matematicky definovaných standardů}
+
+\end{document}

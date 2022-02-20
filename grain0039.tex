@@ -1,0 +1,27 @@
+\documentclass[preview,border=12pt,varwidth]{standalone}% change it back to your own document class
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{scalerel}
+
+\begin{document}
+\abovedisplayskip=0pt\relax% remove this line in  your production
+  \[
+    \int \frac{1}{\cos^2\left(5 - \frac{3x}{4}\right)}\,\mathrm{d}x
+  \]
+  \abovedisplayskip=0pt\relax% remove this line in  your production
+  \[
+    \mathlarger[3]{\int}\dfrac{\dfrac{2}{x}}{\cos^2\left(5 - \frac{3x}{4}\right)}\,\mathrm{d}x
+  \]
+  \[
+    \cos x‎ ‎=‎ ‎‎\sum_{n=0}^{\infty}\frac{(ix)^2n}{(2n)!}‎‎
+  \]
+  použití mathlarger
+  \begin{equation}‎
+    ‎‎\cos x‎ ‎=‎ \mathlarger{\mathlarger{‎‎\sum}}_{n=0}^{\infty}\frac{(ix)^2n}{(2n)!}‎‎
+  \end{equation}
+  použití scalerel
+  \begin{equation}‎
+    ‎‎\sin x‎ ‎=‎ \scalerel{‎‎\sum_{n=0}^{\infty}}{\frac{(\dfrac{\dfrac{ix}{3}}{5x})^2n}{(2n)!}‎‎}
+  \end{equation}
+  ahoj
+\end{document}

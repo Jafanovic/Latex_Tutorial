@@ -1,0 +1,118 @@
+
+\documentclass{scrbook}
+\usepackage{luakoma}
+\usepackage{lualayout}
+\usepackage{luamath} 
+
+\begin{document}
+\begin{subequations}\label{aes:eq036}
+  \begin{align}
+    A(jf)   &= \dfrac{A_0}{1 + \dfrac{jf}{f_0}},                  \label{aes:eq036a}  \\
+    \shortintertext{resp.}   
+    \dfrac{1}{A(jf)} &=  \dfrac{1}{A_0} + j\dfrac{f}{f_T}.        \label{aes:eq036b}  \\
+    \shortintertext{\(f_0\) je \emph{dominantní frekvence}. Příslušná standardní amplitudová 
+                    a fázová frekvenční charakteristika zesílení,}
+    \abs{A} &= \dfrac{A_0}{\sqrt{1 + \frac{f}{f_0}}}, \quad 
+              \arg{A} = - \arctan\dfrac{f}{f_0},                  \label{aes:eq036c}  \\ 
+    \shortintertext{je vynesena na obr. Tři vyznačené údaje \(A_0\), 
+                    \(f_0\) a \(f_T\) jsou vázány vztahem\protect\footnotemark[6]}
+    f_T &= f_0A_0                                                 \label{aes:eq036d}
+  \end{align}
+\end{subequations}
+\footnotetext[6]{Přesně \(f_T = f_0\sqrt{A_0^2-1} = f_0A_0\sqrt{1 - \dfrac{1}{A_0^2}}\).}
+
+\begin{figure}[ht!]  %\ref{fyz:fig133}
+  \centering
+  \includegraphics[width=0.95\linewidth]{example-image-b}
+  \caption{Standardní diagram barevnosti (chromatický diagram \textbf{CIE
+   1931}\protect\footnotemark[5]) (\cite[s.~468]{Feynman01})}
+  \label{fyz:fig133}
+\end{figure}
+
+\footnotetext[5]{Je jeden z prvních matematicky definovaných standardů}
+
+\begin{equation}\label{fyz:eq252}
+  \mathrm{grad}\,T =\nabla T = \left(\pder{T}{x},\, \pder{T}{y},\,\pder{T}{z} \right)
+  \protect\footnotemark[4]
+\end{equation}
+\footnotetext[4]{V naší symbolice představuje výraz \((a, b, c)\) vektor se složkami \(a\),
+\(b\), \(c\). Použijeme-li jednotkové vektory $\vec{i},\,\vec{j},\,\vec{k}$, můžeme psát
+$$\mathrm{grad}\,T=\nabla T = \vec{i}\pder{T}{x} + \vec{j}\pder{T}{y} + \vec{k}\pder{T}{z}$$}
+Použitím této nové symboliky se můžeme pokusit rovnost 
+přepsat na kompaktnější tvar
+
+\begin{mdframed}[style=mdnote]
+  \begin{note}
+    Výrokům se přiřazují pravdivostní hodnoty výroku takto: Je-li výrok pravdivý, přiřazuje se
+    mu pravdivostní hodnota pravda označovaná symbolem (číslicí)
+    \num{1}\protect\footnotemark[2]. Je-li výrok nepravdivý, přiřazuje se mu pravdivostní
+    hodnota nepravda označovaná symbolem (číslicí) \num{0}. O daném výroku se pak stručně
+    říká, že má pravdivostní hodnotu \num{1}\protect\footnotemark[1], resp. \num{0}. 
+  \end{note}
+  \footnotetext[1]{v literatuře se lze setkat též s jejím označením \(P\)}
+  \footnotetext[2]{v literatuře se lze setkat též s jejím označením \(N\)}
+\end{mdframed}
+
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{c|ccc}
+    \rowcolor[HTML]{000000} 
+    \multicolumn{1}{c}{\cellcolor[HTML]{000000}
+      {\color[HTML]{FFFFFF} \textbf{VSWR}}}      & 
+      {\color[HTML]{FFFFFF} \textbf{\(\abs{\Gamma}\)}} & 
+    \multicolumn{2}{c}{\cellcolor[HTML]{000000}
+      {\color[HTML]{FFFFFF} \textbf{Odražený výkon}}}            \\ 
+    \rowcolor[HTML]{000000}{\color[HTML]{FFFFFF} }           & 
+                           {\color[HTML]{FFFFFF} \(\abs{s_{11}}\)}  & 
+                           {\color[HTML]{FFFFFF} (\%)}       & 
+                           {\color[HTML]{FFFFFF} (dB)}           \\
+     1.0 & 0.000 &  0.0 & \(\infty\)  \\
+     1.5 & 0.200 &  4.0 & 14.0  \\
+     2.0 & 0.333 & 11.1 & 9.55  \\
+     2.5 & 0.429 & 18.4 & 7.36  \\
+     3.0 & 0.500 & 25.0 & 6.00  \\
+     3.5 & 0.556 & 30.9 & 5.10  \\
+     4.0 & 0.600 & 36.0 & 4.44  \\
+     5.0 & 0.667 & 44.0 & 3.52  \\
+     6.0 & 0.714 & 51.0 & 2.92  \\
+     7.0 & 0.750 & 56.3 & 2.50  \\
+     8.0 & 0.778 & 60.5 & 2.18  \\
+     9.0 & 0.800 & 64.0 & 1.94  \\
+    10.0 & 0.818 & 66.9 & 1.74  \\
+    15.0 & 0.875 & 76.6 & 1.16  \\
+    20.0 & 0.905 & 81.9 & 0.87  \\
+    50.0 & 0.961 & 92.3 & 0.35  \\ \cline{1-4}
+    \hline
+  \end{tabular}
+  \caption{Demonstrace vzájemného vztahu mezi poměrem stojatých vln \texttt{VSWR}, amplitudy 
+           koeficientu odrazu \(\Gamma\) a velikostí odraženého výkonu\protect\footnotemark[3] 
+           vyjádřeného v procentech a decibelech.}
+  \label{fig_RA:VSWRGammaTable}
+\end{table}
+
+\footnotetext[3]{Return loss}
+
+%!!! nepoužívat footnote v equation 
+\begin{equation}\label{fyz:eq473}
+  Z(\text{indukčnost}) = Z_L = i\omega L.\footnote{\(Z_L\) nazýváme induktance}
+\end{equation}
+
+komplexní číslo \(3 + \imath1 +\pi ∈\) \(\lim\limits_{x\to+\infty}f(x) = +\infty\) 
+
+Je dána funkce \(f: f(x) = x^3\). Sledujme její chování, když hodnoty argumentu \(x\) budou vzrůstat
+nade všechny meze \(x \to + \infty\) (viz obr. \ref{mai:fig020}). Můžeme pozorovat, že i funkční
+hodnoty budou přitom neomezeně růst. V tomto případě píšeme \(\lim\limits_{x\to+\infty}f(x) =
++\infty\) nebo \(f(x)\to+\infty\) pro  \(x\to+\infty\) a říkáme, že funcke \(f\) má v bodě
+\(+\infty\) limitu \(+\infty\)
+
+Nechť \(\varphi(x) = x^2\), \(a = 1\). Potom \[f(x) = \dfrac{x^2 - 1}{x - 1}\]. Pro \(x \neq 1\)
+je hodnota funkce \(f\) rovna 
+\begin{equation*}
+  f(x) = \dfrac{(x + 1)\cancel{(x - 1 )}}{\cancel{(x - 1)}} = x + 1. 
+\end{equation*}
+\begin{equation*}
+  \lim\limits{x\to1}f(x)=2    \quad\text{nebo}\quad 
+  f(x) \to 2                   \text{ pro }  x\to 1.
+\end{equation*}
+
+\end{document}

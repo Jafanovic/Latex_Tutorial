@@ -1,0 +1,118 @@
+% Is it possible to change the background color of the \tbclower in a tcolorbox?
+%---------------------------------------------------------------------------------------------------
+% https://tex.stackexchange.com/questions/253411/is-it-possible-to-change-the-background-color-of-the-tbclower-in-a-tcolorbox
+% Use the skin=bicolor option. This enables the colbacklower key, which can then be set to any color
+% specification.
+
+\documentclass{scrbook}
+  \usepackage{scrhack}
+  \usepackage[utf8]{inputenc}
+  \usepackage[most]{tcolorbox}
+% \tcbuselibrary{skins}
+  \usepackage{amsmath}
+  \usepackage{amsfonts} % https://tex.stackexchange.com/questions/38769/mathbbz-yields-undefined-control-sequence-error
+  \usepackage{amsthm}   % https://tex.stackexchange.com/questions/32100/what-does-each-ams-package-do
+
+  % The amsthm package provides an enhanced version of LaTeX's \newtheorem command for defining
+  % theorem-like environments. The enhanced \newtheorem recognizes a \theoremstyle specification (as
+  % in Mittelbach's theorem package) and has a * form for defining unnumbered environments. The
+  % amsthm package also defines a proof environment that automatically adds a QED symbol at the end.
+  % AMS document classes incorporate the amsthm package, so everything described here applies to
+  % them as well.
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newtcolorbox[auto counter]{formula}{%
+  enhanced,
+  skin=bicolor,
+  before=\centering\bigskip,
+  after=\bigskip,
+  width=.65\linewidth,
+  colback=orange!30,
+  fonttitle=\sffamily\bfseries\Large,
+  title=Fórmula~\thetcbcounter,
+  arc=15pt,
+  colupper=black,
+  fontupper=\sffamily\bfseries,
+  height=2.5cm,
+  valign=center,
+  top=-2mm,
+  sharp corners,
+  sidebyside,
+  lower separated=true,
+  rounded corners=south,
+  attach boxed title to top center={yshift=-0.25mm-\tcboxedtitleheight/2,yshifttext=-0.25mm-\tcboxedtitleheight/2},
+  boxed title style={%
+    enhanced,
+    colframe=red,
+    colback=orange,
+    arc=5pt
+  },
+  frame style={%
+    left color=red,
+    right color=orange},
+  colbacklower=white
+}
+
+% https://tex.stackexchange.com/questions/253411/is-it-possible-to-change-the-background-color-of-the-tbclower-in-a-tcolorbox
+% =====  Environment "théorème"  ======================
+     
+\newtcolorbox[auto counter,number within=chapter]{thm}[1][]{%
+  colback=green!10!white,
+  colframe=green!20!white,
+  fonttitle=\bfseries,
+  coltitle=black,
+  toprule=3pt,
+  leftrule=2pt,
+  rightrule=2pt,
+  titlerule=0pt,
+  title=Th\'eor\'eme.~\thetcbcounter,#1
+} 
+
+%======== Environment  "Remarque " ====================
+
+\newtcolorbox{rmk}[1][]{
+  breakable,
+  title=Remarque,
+  colback=white,
+  colbacktitle=green!20!white,
+  coltitle=Black,
+  fonttitle=\bfseries,
+  bottomrule=0pt,
+  toprule=0pt,
+  leftrule=2pt,
+  rightrule=0pt,
+  titlerule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=red   
+}	
+%================================================================
+
+
+\begin{document}
+
+\begin{formula}
+  \centering
+  Slope of a line given two points
+  \tcblower
+  \[m=\dfrac{y_{2}-y_{1}}{x_{2}-x_{1}}\]
+\end{formula}
+
+\chapter{Chapitre}
+  \section{La fonction Gamma} 
+    \begin{thm}
+      Pour tout $x\in \mathbb{R}^{+*}$
+      \begin{equation}
+        \Gamma(x)= \lim_{k\rightarrow +\infty} \frac{k^{x}k!}{x(x+1)\ldots(x+k)}.
+      \end{equation}
+    \end{thm}
+
+    \begin{proof}
+      on consid\'ere \dots \\ par suite \\ d'o\`u le r\'esultat.
+    \end{proof}
+    \begin{rmk}
+      Le th\'eor\'eme pr\'ec\`edant est due aux deux math\'ematiciens 
+      Euler et Gauss.
+    \end{rmk}
+\end{document}

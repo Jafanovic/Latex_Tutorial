@@ -1,0 +1,41 @@
+% Macro definition \calcLength:
+% https://www.latex4technics.com/?note=1D14
+\documentclass[11pt]{scrartcl}
+\usepackage{tikz,fp}
+\usetikzlibrary{calc}
+
+\makeatletter
+\def\calcLength(#1,#2)#3{%
+\pgfpointdiff{\pgfpointanchor{#1}{center}}%
+             {\pgfpointanchor{#2}{center}}%
+\pgf@xa=\pgf@x%
+\pgf@ya=\pgf@y%
+\FPeval\@temp@a{\pgfmath@tonumber{\pgf@xa}}%
+\FPeval\@temp@b{\pgfmath@tonumber{\pgf@ya}}%
+\FPeval\@temp@sum{(\@temp@a*\@temp@a+\@temp@b*\@temp@b)}%
+\FProot{\FPMathLen}{\@temp@sum}{2}%
+\FPround\FPMathLen\FPMathLen5\relax
+\global\expandafter\edef\csname #3\endcsname{\FPMathLen}
+}
+\makeatother
+
+\begin{document} 
+
+  5cm = 5*28.45274 pt =142.2637pt
+
+\begin{tikzpicture}
+\coordinate (A) at (1,2);
+\coordinate (B) at (4,6);
+\calcLength(A,B){mylen}
+% \draw (A) circle (\mylen pt); % pt is important here
+\end{tikzpicture}
+With calclength the length of AB is : \mylen
+
+\begin{tikzpicture}
+\coordinate (A) at (1,2);
+\coordinate (B) at (4,6);
+\path (A) let   \p1 = ($ (B) - (A) $),  \n1 = {veclen(\x1,\y1)} 
+    in -- (B) node[draw]  {With veclen the length is :\n1};
+\end{tikzpicture}   
+
+\end{document}

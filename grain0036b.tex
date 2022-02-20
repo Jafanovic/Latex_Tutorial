@@ -1,0 +1,116 @@
+% https://tex.stackexchange.com/questions/458326/how-to-set-exact-margins-in-koma-script-report
+% https://tex.stackexchange.com/questions/23314/how-to-remove-1-inch-paddings-without-using-hoffset-and-voffset
+
+\documentclass[
+  paper=157.794mm:210.392mm,
+  DIV=36,
+  headinclude=false
+]{scrbook}
+ 
+\usepackage{helvet}
+\usepackage{blindtext}
+
+\usepackage{layouts}  % https://tex.stackexchange.com/questions/183172/koma-script-typearea-and-div
+\usepackage{layout}
+\usepackage[headsepline]{scrlayer-scrpage}
+ 
+\pagestyle{scrheadings}
+\setkomafont{pageheadfoot}{\normalfont\normalcolor\itshape\small}
+\setkomafont{pagenumber}{\normalfont\bfseries}
+\ihead{\pagemark}                         % scrguien page 255
+\ofoot[]{}                                % remove pagenumber from outer foot
+\cfoot[]{}                                % remove pagenumber from centre foot
+ 
+% \setlength{\headsep}{0mm}
+% \setlength{\textheight}{210mm}
+% \setlength{\textwidth}{157mm}
+
+% \setlength{\headheight}{9.6pt}
+
+% Margins
+% \setlength{\oddsidemargin}{-72.27pt}  % 1in
+% \setlength{\topmargin}{-72.27pt}
+% \setlength{\evensidemargin}{-72.27pt}
+
+% \setlength{\hoffset}{-25.4mm}
+% \setlength{\voffset}{0mm}
+ 
+ 
+\begin{document}
+  \printinunitsof{mm}{\pagevalues}
+
+  \verb|\marginparwidth|: \printinunitsof{mm}\prntlen{\marginparwidth}
+
+  \pagediagram
+  \chapter{layout}
+  \layout
+
+  % \chapter{Moje Kapitola}
+
+  Kromě toho, \emph{oxid uhelnatý} není zcela uspokojen. Je možné, aby k sobě připoutal další atom
+  kyslíku a tak dostaneme mnohem složitější reakci, ve které se kyslík spojuje s uhlíkem a současně
+  dochází ke srážce s molekulou oxidu uhelnatého. Kyslíkový atom se připojí k CO a v konečném
+  důsledku vytvoří molekulu složenou z jednoho uhlíku a dvou kyslíků. Tato molekula má označení CO2
+  a nazývá se \emph{oxid uhličitý}. Spalujeme-li uhlík ve velmi malém množství kyslíku a reakce
+  probíhá velmi rychle (např. v motoru automobilu, kde je výbuch tak rychlý, že se nestačí vytvořit
+  oxid uhličitý), vzniká velké množství oxidu uhelnatého. V mnoha takových přeskupeních atomů se
+  uvolňuje velké množství energie, vznikají výbuchy, plamen apod., podle druhu reakce. Chemici
+  studovali takové seskupení atomů a zjistili, že každá látka představuje určitý druh
+  \emph{uspořádání atomů}.
+
+  K objasnění této myšlenky si zvolme jiný příklad. Ocitneme-li se na louce rozkvetlé fialkami,
+  víme, co je to za „vůni“. Je to určitý druh molekul nebo seskupení atomů, které se dostalo do
+  našeho nosu. Jak se nám to stalo? To je dost jednoduché! Jestliže vůně je jistý druh molekul, tím
+  nejrozmanitějším způsobem poletujících a srážejících se ve vzduchu, pak se může náhodou dostat i
+  do nosu. Tyto molekuly se určitě nesnažily dostat právě do našeho nosu. Jsou jen bezmocnou částí
+  strkajícího se zástupu molekul, jehož kousek se na svém bezcílném putování dostal do našeho nosu.
+  
+  
+  Chemici mohou i takové zvláštní molekuly, jako je vůně fialek, podrobit analýze a říci nám
+  \emph{přesné uspořádání} jejich atomů v prostoru. Víme, že molekula oxidu uhličitého je
+  \emph{přímá a symetrická}: (lze to snadno zjistit i fyzikálními metodami). I pro mnohem složitější
+  seskupení atomů, jako jsou ty, se kterými pracuje chemie, můžeme zdlouhavým, pozoruhodným
+  procesem, připomínajícím práci detektiva, zjistit tvar seskupení. Obr. znázorňuje vzduch v
+  blízkosti fialky: ve vzduchu opět nalézáme dusík, kyslík a vodní páru. (Odkud se vzala vodní pára?
+  Fialka je vlhká, protože všechny rostliny odpařují vodu.) Vidíme však i monstrum složené z
+  uhlíkových, vodíkových a kyslíkových atomů, které vytvořily zcela určité, zvláštní seskupení. Je
+  to mnohem složitější seskupení než v případě oxidu uhličitého. Naneštěstí do obrázku nemůžeme
+  zakreslit všechno, co o něm po chemické stránce víme, neboť seskupení všech atomů je trojrozměrné,
+  zatímco náš obrázek je pouze dvojrozměrný. Šest uhlíků vytváří ne plochý, ale zvrásněný prstenec.
+  Všechny úhly a vzdálenosti známe. Chemický vzorec je jen obrázkem takové molekuly. Když chemik
+  napíše vzorec na tabuli, snaží se nakreslit dvojrozměrný obraz molekuly. Například, vidíme
+  prstenec šesti uhlíků a na jednom konci visící řetěz uhlíků, na něm kyslík druhý od konce, tři
+  vodíky vázané na tento uhlík, dva uhlíky a tři vodíky vázané nahoře atd.
+
+  Kromě toho, \emph{oxid uhelnatý} není zcela uspokojen. Je možné, aby k sobě připoutal další atom
+  kyslíku a tak dostaneme mnohem složitější reakci, ve které se kyslík spojuje s uhlíkem a současně
+  dochází ke srážce s molekulou oxidu uhelnatého. Kyslíkový atom se připojí k CO a v konečném
+  důsledku vytvoří molekulu složenou z jednoho uhlíku a dvou kyslíků. Tato molekula má označení CO2
+  a nazývá se \emph{oxid uhličitý}. Spalujeme-li uhlík ve velmi malém množství kyslíku a reakce
+  probíhá velmi rychle (např. v motoru automobilu, kde je výbuch tak rychlý, že se nestačí vytvořit
+  oxid uhličitý), vzniká velké množství oxidu uhelnatého. V mnoha takových přeskupeních atomů se
+  uvolňuje velké množství energie, vznikají výbuchy, plamen apod., podle druhu reakce. Chemici
+  studovali takové seskupení atomů a zjistili, že každá látka představuje určitý druh
+  \emph{uspořádání atomů}.
+
+  Chemici mohou i takové zvláštní molekuly, jako je vůně fialek, podrobit analýze a říci nám
+  \emph{přesné uspořádání} jejich atomů v prostoru. Víme, že molekula oxidu uhličitého je
+  \emph{přímá a symetrická}: (lze to snadno zjistit i fyzikálními metodami). I pro mnohem složitější
+  seskupení atomů, jako jsou ty, se kterými pracuje chemie, můžeme zdlouhavým, pozoruhodným
+  procesem, připomínajícím práci detektiva, zjistit tvar seskupení. Obr. znázorňuje vzduch v
+  blízkosti fialky: ve vzduchu opět nalézáme dusík, kyslík a vodní páru. (Odkud se vzala vodní pára?
+  Fialka je vlhká, protože všechny rostliny odpařují vodu.) Vidíme však i monstrum složené z
+  uhlíkových, vodíkových a kyslíkových atomů, které vytvořily zcela určité, zvláštní seskupení. Je
+  to mnohem složitější seskupení než v případě oxidu uhličitého. Naneštěstí do obrázku nemůžeme
+  zakreslit všechno, co o něm po chemické stránce víme, neboť seskupení všech atomů je trojrozměrné,
+  zatímco náš obrázek je pouze dvojrozměrný. Šest uhlíků vytváří ne plochý, ale zvrásněný prstenec.
+  Všechny úhly a vzdálenosti známe. Chemický vzorec je jen obrázkem takové molekuly. Když chemik
+  napíše vzorec na tabuli, snaží se nakreslit dvojrozměrný obraz molekuly. Například, vidíme
+  prstenec šesti uhlíků a na jednom konci visící řetěz uhlíků, na něm kyslík druhý od konce, tři
+  vodíky vázané na tento uhlík, dva uhlíky a tři vodíky vázané nahoře atd.
+
+  \blindtext[5]
+ 
+
+ 
+\end{document}

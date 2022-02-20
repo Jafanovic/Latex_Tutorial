@@ -1,0 +1,41 @@
+
+\documentclass{scrbook}
+% \usepackage{luakoma}
+% \usepackage{lualayout}
+
+% ~~~~~~~~~~~~~~ Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% how-to-fix-the-incompatility-between-biber-and-biblatex-versions
+% https://tex.stackexchange.com/questions/309991/
+% Bibliography with UTF8 support
+% note: - The backend option is not read correctly by the parser, if it is in the first
+%         position (right after the square bracket) of the usepackage command. 
+\usepackage[main=czech,greek,russian,ngerman]{babel}
+\babelfont[greek]{rm}{Cambria}
+\babelfont[russian]{rm}{Cambria}
+\babelfont[ngerman]{rm}{Cambria}
+\babelfont[english]{rm}{Cambria}
+\usepackage[czech]{csquotes}
+
+\RequirePackage[
+  backref=true,                             % 
+  hyperref=true,                            % 
+  refsection=part,                          % Start a reference section at every \part command.
+  indexing=true,                            %
+  url=true,                                 % 
+  style=ieee,                               % alphabetic, authoryear, ieee
+  backend=biber,                            % 
+  doi=false,
+  isbn=true,                                % https://tex.stackexchange.com/questions/395204/
+  % sortlocale=en-GB,
+  texencoding=utf8,
+  bibencoding=utf8]{biblatex}
+    \addbibresource{MasterBiblioLib.bib}
+    \addbibresource{appnote.bib}
+    \addbibresource{standards.bib}
+
+
+
+
+\begin{document}
+  Book \cite[s.~545]{Feynman02}). 
+\end{document}

@@ -1,0 +1,18 @@
+\documentclass{article}
+  \usepackage{array}
+  % tex.stackexchange.com/questions/12703 
+  \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  \newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+  \usepackage{tabularx} 
+  \usepackage{amsmath}
+  \usepackage{colortbl}
+\listfiles  
+\begin{document}
+  \begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c|x{6cm}|}
+      \(a + b\)  & first equation description    \\ %\midrule
+      \(a - c\)  & second equation description   \\
+    \end{tabular}
+  \end{table}
+\end{document}

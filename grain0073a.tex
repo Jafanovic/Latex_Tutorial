@@ -1,0 +1,147 @@
+% https://tex.stackexchange.com/questions/633534/create-section-level-toc-in-a-koma-script-document-with-tcolorbox-and-tocbasic-l/633612#633612
+% I think we can use the minitoc package to get a toc per chapter. The strip environment defined in
+% the cuted package is used here to make the minitoc take all the page width in a two columns
+% document.
+
+\documentclass[fontsize=10pt,open=any,twocolumn]{scrbook}[2019/10/12]% needs version 3.27 or newer
+    \usepackage{blindtext}
+    
+    \usepackage{minitoc,cuted}
+    \dominitoc
+
+\setcounter{tocdepth}{\partnumdepth}% depth of TOC
+
+
+
+\begin{document}
+\tableofcontents
+
+\part{My Part I}
+
+%\setchaptertoc
+    \chapter{My chapter I}
+    
+    \begin{strip}
+    \minitoc
+    \end{strip}
+        \section{My first section}
+            \blindtext
+        \subsection{My 1th subsection}
+            \blindtext
+        \subsection{My 2nd subsection}
+            \blindtext
+        \subsection{My 3rd subsection}
+            \blindtext
+        \subsection{My 4th subsection}
+            \blindtext
+        \subsection{My 5th subsection}
+            \blindtext
+        \subsection{My 6th subsection}
+            \blindtext
+        \subsection{My 7th subsection}
+            \blindtext
+        \subsection{My 8th subsection}
+            \blindtext
+        \subsection{My 9th subsection}
+            \blindtext
+        \subsection{My 10th subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+    \section{My second section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext     
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext    
+    \section{My third section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My second subsection}
+            \blindtext     
+        \subsection{My third subsection}
+            \blindtext
+        \subsection{My fourth subsection}
+            \blindtext       
+    \section{My fourth section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext     
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext    
+    \section{My fifth section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My second subsection}
+            \blindtext     
+        \subsection{My third subsection}
+            \blindtext
+        \subsection{My fourth subsection}
+            \blindtext  
+    \section{My sixth section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My second subsection}
+            \blindtext     
+        \subsection{My third subsection}
+            \blindtext
+        \subsection{My fourth subsection}
+            \blindtext    
+    \section{My seventh section}
+            \blindtext
+        \subsection{My first subsection}
+            \blindtext
+        \subsection{My second subsection}
+            \blindtext     
+        \subsection{My third subsection}
+            \blindtext
+        \subsection{My fourth subsection}
+            \blindtext           
+\end{document}

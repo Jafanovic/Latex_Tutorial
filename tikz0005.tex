@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[american,siunitx]{circuitikz}
+\usetikzlibrary{arrows.meta}
+
+% Ref: https://tex.stackexchange.com/a/396801/117534
+\makeatletter
+\ctikzset{current arrow color/.initial=black}% create key
+\pgfdeclareshape{currarrow}{
+    \anchor{center}{
+        \pgfpointorigin
+    }
+    \anchor{tip}{
+        \pgfpointorigin
+        \pgf@circ@res@step = \pgf@circ@Rlen
+        \divide \pgf@circ@res@step by 16
+        \pgf@x  =\pgf@circ@res@step
+    }
+    \behindforegroundpath{      
+
+        \pgfscope
+        \pgf@circ@res@step = \pgf@circ@Rlen
+        \divide \pgf@circ@res@step by 16
+
+        \pgfpathmoveto{\pgfpoint{-.7\pgf@circ@res@step}{0pt}}
+        \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{-.8\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{1\pgf@circ@res@step}{0pt}}
+        \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{.8\pgf@circ@res@step}}
+        \pgfpathlineto{\pgfpoint{-.7\pgf@circ@res@step}{0pt}}           
+        \pgfsetcolor{\pgfkeysvalueof{/tikz/circuitikz/current arrow color}}
+        \pgfusepath{fill,draw}
+        \endpgfscope
+    }
+}
+\makeatother
+
+\begin{document}
+    \begin{circuitikz}[color=NavyBlue]
+        \draw[circuitikz/current arrow color=red]
+        (0,0) to[R=20<\ohm>] (2,0) to[battery1, l=10<\volt>,i_=$I_3$] (4,0)
+        -- (4,1.8) to[battery1,l_=10<\volt>, i^<=$I_2$] (2,1.8) to[R, l_=5<\ohm>] (0,1.8) -| (0,0) 
+        -| (0,3.6) to[R=10<\ohm>] (2,3.6) to[battery1, l=6<\volt>,i_=$I_1$] (4,3.6) -- (4,1.8)
+        ;
+    \end{circuitikz}
+\end{document}

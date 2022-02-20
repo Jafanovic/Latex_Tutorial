@@ -1,0 +1,19 @@
+\documentclass{scrbook}
+  \usepackage[export]{adjustbox}
+  \usepackage{graphicx}
+  \usepackage{tabularx}
+ 
+
+\begin{document}
+\begin{figure*}
+  \refstepcounter{figure}
+  \begin{tabularx}{\linewidth}{|c|c|}
+    \hline \\
+    \includegraphics[width=0.2\linewidth,height=0.2\textheight,keepaspectratio]{example-image-a}
+        &
+    \rotatebox{90}{\parbox[t]{3cm}{Obrázek~\thefigure: Long dummy text that can't be wrapped}} \\
+    \hline
+  \end{tabularx}
+\end{figure*}
+
+\end{document}

@@ -1,0 +1,24 @@
+% https://tex.stackexchange.com/questions/258/what-is-the-difference-between-let-and-def
+% What is the difference between \let and \def?
+
+% Thus \let\foo\bar defines \foo to have the value that \bar had at the point of definition. On the
+% other hand, \def\foo{\bar} in effect defines \foo to have the value that \bar has at the point of
+% use.
+\documentclass{article}
+
+\begin{document}
+  \def\bar{hello}
+  \let\fooi\bar
+  \def\fooii{\bar}
+  \fooi +\fooii
+
+  \def\bar{goodbye}
+  \fooi +\fooii
+
+  \def \foo {bar}
+  \let \baz \foo
+  \baz % Outputs 'bar'
+  \def \foo {new-definition}
+  \baz % Still outputs 'bar'
+  
+  \end{document}

@@ -1,0 +1,15 @@
+% lualatex.exe \providecommand{\DebugMode}{true}\input{grain0055_vol02.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=grain0055_vol02
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\documentclass{scrbook}
+  \usepackage{xr-hyper} 
+  \usepackage{hyperref}
+  \usepackage{siunitx}
+
+
+
+\begin{document}
+\externaldocument[B-]{grain0064_vol01}[grain0064_vol01.pdf]
+
+
+ Link to file \texttt{grain0064\_vol1} figure \ref{B-fig:example} in section \ref{B-section}. 
+\end{document}

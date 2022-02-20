@@ -1,0 +1,39 @@
+\input{../Luaking/tex/ebook}
+\documentclass{scrbook}
+
+\usepackage{amsmath}  
+\usepackage{mdframed}
+\usepackage{blindtext}
+
+\mdfdefinestyle{mdeq}{
+  % outermargin    =  1cm,
+  skipabove        =  \topskip,
+  skipbelow        =  \topskip,
+  innertopmargin  =  4pt,
+  innerbottommargin =  4pt,
+  roundcorner      =  20pt
+  }
+
+\providecommand\eBookMode{true}
+\begin{document}
+\chapter{Chapter test}
+\section{Motivace}
+  Problém \emph{neurčitého integrálu}, neboli \textbf{primitivní funkce}, lze vyložit velmi 
+  jednoduše: Máme podezření, že zadaná funkce \(f(x)\) vznikla derivováním jisté, zatím neznámé, 
+  funkce \(F(x)\). Dokážeme ji najít? 
+  \begin{mdframed}[style=mdeq] 
+    \begin{equation}
+      \int x^2 dx
+    \end{equation}
+  \end{mdframed}
+  K danému problému můžeme přistupovat také fyzikálně: Zavedením pojmu derivace funkce jsme 
+  \begin{mdframed}[style=mdeq]
+    \begin{equation}\label{mai:eq102}
+      \boxed{\int f(x) dx = F(x) + c}
+    \end{equation}
+  \end{mdframed}
+  motivovali důležitým požadavkem definovat okamžitou rychlost pohybu bodu po přímce. Existuje 
+  přirozeně i požadavek opačný, tj. nalézt zákon dráhy pohybu bodu po přímce, je-li dána jeho 
+  okamžitá rychlost jako funkce času \cite[s.~253]{Brabec1989}. Vše si ukážeme na následujícím 
+  příkladu:     
+\end{document}

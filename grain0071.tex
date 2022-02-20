@@ -1,0 +1,104 @@
+% Drawing Realistic Linux Command Shell Windows with tcolorbox
+% https://tex.stackexchange.com/questions/517976/drawing-realistic-linux-command-shell-windows-with-tcolorbox
+\documentclass[]{scrbook}
+  % \usepackage[a4paper,margin=1in]{geometry}
+  % \usepackage{tcolorbox,url,tikzlings}
+  % \tcbuselibrary{skins,xparse,listings}
+
+  % \usepackage{luamath}
+  \usepackage{luaCodeLst}
+
+\begin{document}
+
+% \newtcblisting{ubuntu}{%
+%   colback=violet!50!black,
+%   colupper=white,
+%   colframe=gray!65!black,
+%   listing only,
+%   width=7cm,
+%   left=1pt,
+%   right=1pt,
+%   top=0pt,
+%   listing options={
+%     % basicstyle=\small\ttfamily\bfseries, 
+%     style=tcblatex,
+%     language=sh,
+%     escapeinside=``,
+%     aboveskip=0pt,belowskip=0pt,
+%     extendedchars=true
+%   },
+%   title={\textcolor{orange}{\Huge{$\bullet$}}{\textcolor{gray}{\Huge{$\bullet\bullet$}}}},
+%   every listing line={\MyUbuntuPrompt},
+%   enhanced,
+%   overlay={ \begin{tcbinvclipframe}
+%               % \penguin[shift={([xshift=2cm,yshift=-0.8cm]frame.north)}]
+%               \penguin[rotate = -30, scale=0.6, shift={([xshift=5.5cm, yshift=1.5cm]frame.north)}]
+%             \end{tcbinvclipframe}
+%           }
+%   }
+
+% % https://askubuntu.com/questions/706186/difference-between-and-in-linux-environment
+% % $, #, % symbols indicate the user account type you are logged in to.
+% %  *   Dollar sign ($) means you are a normal user.
+% %  *   hash (#) means you are the system administrator (root).
+% %  *   In the C shell, the prompt ends with a percentage sign (%).  
+
+% \pgfkeys{/ubuntu/.cd,
+%   user/.code={\gdef\MyUbuntuUser{#1}},user={},
+%   host/.code={\gdef\MyUbuntuHost{#1}},host={},
+%   color/.code={\gdef\MyUbuntuColor{#1}},color=white,
+%   prompt char/.code={\gdef\MyUbuntuPromptChar{#1}},
+%   prompt char=\#,
+%   root/.style={user=root, host=ubuntu, color=lime, prompt char=\#},
+%   bob/.style={user=bob, host=remotehost, color=cyan},
+%   cat/.style={user={schroedingers\char`_cat}, host=burrow, color=magenta, prompt char=\$},
+%   raspi/.style={user=pi, host=raspi, color=magenta, prompt char=\#}
+% }
+% \newcommand{\SU}[1]{\pgfkeys{/ubuntu/.cd,#1}%
+%   \gdef\MyUbuntuPrompt{%
+%     \textcolor{\MyUbuntuColor}{%
+%       \small\ttfamily\bfseries \MyUbuntuUser@\MyUbuntuHost{%
+%         \textcolor{white}:
+%       }\textcolor{cyan!60}{\url{~}}{\textcolor{green}\MyUbuntuPromptChar} 
+%     }
+%   }
+% }
+
+% \newcommand{\StartConsole}{\gdef\MyUbuntuPrompt{}}
+
+\SU{raspi}
+\begin{ubuntu}
+  whoami `\StartConsole`
+  root `\SU{root}` 
+  id `\StartConsole` 
+  uid=0(root) gid=0(root) groups=0(root)`\SU{root}`
+  hostname `\StartConsole`
+  ubuntu`\SU{root}`
+  ssh cat@burrow`\StartConsole`
+  bob@remotehost's`\ `password:
+  Linux remotehost 2.6.32-5-686 #1 SMP Sun Sep 23 09:49:36 UTC 2012 i686
+  You have mail.
+  Last login: Wed Oct 16 01:12:35 2012 from localhost
+  `\SU{cat}`
+  whoami`\StartConsole`
+  schroedingers_cat`\SU{cat}`
+\end{ubuntu}
+
+\SU{raspi}
+\begin{ubuntu}
+  `\StartConsole`
+  In integer abs()
+  Absolute value of -10: 10 
+  In long abs()
+  Absolute value of -10L: 10
+  In double abs() 
+  Absolute value of -10.01: 10.01
+\end{ubuntu}
+
+% \SU{raspi}
+% \begin{ubuntu}
+%   `\StartConsole`
+%   ahoju
+% \end{ubuntu}
+ahoj
+\end{document}

@@ -1,0 +1,49 @@
+% https://tex.stackexchange.com/questions/520667/fonstspec-package-creates-character-consists-of-the-seperate-symbol-and-accent
+% https://tex.stackexchange.com/questions/468795/best-way-of-using-the-full-range-of-full-fonts-styles-faces-for-latin-modern-rom
+
+\documentclass[a4paper,10pt,draft]{article}
+% Additional Options
+\usepackage[landscape]{geometry}
+\usepackage{fontspec}
+%fontspec options:
+\setmainfont[
+    Ligatures=TeX,
+    SmallCapsFont={Latin Modern Roman Caps},
+    SlantedFont={* Slanted 10},
+    ItalicFeatures  = {
+        SmallCapsFont = {LMRomanCaps10-Oblique}
+    },
+    ]{LM Roman}
+
+\newfontface\unshape[]{Latin Modern Roman Unslanted} 
+\newcommand\textun[1]{{\unshape #1}}
+
+\fontspec[
+    FakeBold=4,
+    SmallCapsFont={Latin Modern Roman Caps}
+    ]{Latin Modern Roman}
+\DeclareFontShape{EU1}{LatinModernRoman(0)}{bx}{sc}{<->ssub * LatinModernRoman(1)/m/sc}{}
+
+\def\testtext{%
+    Latin Modern Roman normal text \par
+    \textit{Latin Modern Roman italic text} \par
+    \textsl{Latin Modern Roman Slanted} \par
+    % {\textun{Latin Modern Roman Unslanted}} \par
+    \textsc{Latin Modern Roman Caps} \par
+    \emph{\textsc{Latin Modern Roman Oblique small caps?}} \par
+    {\bfseries\scshape Latin Modern Roman Caps FakeBold}\par
+    \null\par
+}
+\begin{document}
+    {\tiny\testtext}
+    {\scriptsize\testtext}
+    {\footnotesize\testtext}
+    {\small\testtext}
+    \testtext
+    {\large\testtext}
+    {\Large\testtext}
+    {\LARGE\testtext}
+    {\huge\testtext}
+    {\Huge\testtext}
+    Příliš žluťoučký kůň úpěl ďábelské ódy!
+\end{document}

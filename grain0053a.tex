@@ -1,0 +1,27 @@
+\documentclass{scrbook}
+  \usepackage{xr-hyper}
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
+  
+\providecommand\DebugMode{true}
+
+\externaldocument[B-]{grain0053b}[grain0053b.pdf]% <- full or relative path 
+
+
+\begin{document}
+  \ifthenelse{ \equal{\DebugMode}{true} }{
+    This is a test for math.
+    \begin{equation}
+        E=mc^2 \label{eq:1}
+    \end{equation}
+  }{
+    This is a second test for math.
+    \begin{equation}
+        r = \sqrt{x^2 + y^2} \label{eq:2}
+    \end{equation}
+    In document B Eq.~~(\ref{B-eq:x}) 
+  }
+\end{document}

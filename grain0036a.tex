@@ -1,0 +1,82 @@
+% 1404 px = 157.794690265 mm
+% 1872 px = 210.392920354 mm
+% 226 DPI
+\documentclass[
+  % paper=157.794mm:210.392mm,
+  % fontsize=10pt,
+  % headinclude=false,
+  % twocolumn,
+  % chapterprefix=true
+  % footinclude=false 
+]{scrguide}
+  % \usepackage[
+  %   headinclude=false,
+  %   footinclude=false 
+  %   % paper=157.794mm:210.392mm
+  % ]{typearea}
+  % \areaset{156mm}{209mm}  % \areaset[current]{\textwidth}{\textheight}
+
+  % \usepackage[headsepline]{scrlayer-scrpage}
+  % \setlength{\textwidth}{157.794mm}
+  % \setlength{\marginparwidth}{0pt}
+  % \setlength{\evensidemargin}{0pt}
+  % \setlength{\oddsidemargin}{0pt}
+  % \setlength{\hoffset}{-25.4mm}
+  % \setlength{\voffset}{-25.4mm}
+  % \setlength{\marginparsep}{0pt}
+  % \setlength{\headsep}{4pt}
+
+%   % ---- Part ----------------------------------------------------------------------------------------
+% % https://tex.stackexchange.com/questions/102303/
+% % \newcommand{\partformat}{{\partname}{}} % Remove chapter and part text from LaTeX documents
+% % https://tex.stackexchange.com/questions/110092/how-to-change-part-and-chapter-pages-on-koma-script
+% \addtokomafont{part}{\normalcolor}% use normal color for part title
+% \addtokomafont{chapterprefix}{\raggedleft}
+% % EBOOK setting
+% \setkomafont{part}{\fontsize{60}{72}\selectfont}
+% \setkomafont{chapter}{\fontsize{18}{22}\selectfont}
+% \setkomafont{section}{\fontsize{13}{15}\selectfont}
+%   % https://tex.stackexchange.com/questions/194585/
+% \addtokomafont{section}{\newpage}
+
+% \pagestyle{scrheadings}
+% \setkomafont{pageheadfoot}{\normalfont\normalcolor\itshape\small}
+% \setkomafont{pagenumber}{\normalfont\bfseries}
+% \ihead{\pagemark}                         % scrguien page 255
+% \ofoot[]{}                                % remove pagenumber from outer foot
+% \cfoot[]{}                                % remove pagenumber from centre foot
+
+
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{layouts}  % https://tex.stackexchange.com/questions/183172/koma-script-typearea-and-div
+\usepackage{layout}
+
+\begin{document}
+  % \printinunitsof{mm}{\pagevalues}
+
+  % \verb|\marginparwidth|: \printinunitsof{mm}\prntlen{\marginparwidth}
+
+  % \pagediagram
+  % \chapter{layout}
+  % \layout
+
+  % \newpage
+  % \chapter{Můj nadpis}
+  %   \section*{Supported Paper Sizes}
+  %     \blindtext
+  %     \begin{equation}
+  %       \int_\infty^\infty x^2 dx
+  %     \end{equation} 
+
+  %     \blindtext
+  %     \begin{equation}
+  %       \sum_\infty^\infty x^k
+  %     \end{equation} 
+  %     \blindtext
+
+  %     \blindtext
+
+      \blindtext
+
+\end{document}

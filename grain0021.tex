@@ -1,0 +1,75 @@
+% https://tex.stackexchange.com/questions/516093/replacement-minitoc-package-style-by-koma-script-possibilities
+% https://komascript.de/node/2107
+\documentclass{scrreprt}
+ 
+\usepackage{hyperref}
+\usepackage{mwe}
+ 
+\makeatletter
+\ifundefinedorrelax{ext@toc}{%
+  \newcommand*{\ext@toc}{toc}
+  \renewcommand{\addtocentrydefault}[3]{%
+    \expandafter\tocbasic@addxcontentsline\expandafter{\ext@toc}{#1}{#2}{#3}%
+  }
+}{}
+\newcommand*{\switchcontents}[1]{%
+  \edef\ext@toc{toc#1}% define new toc extension
+  % If you do not want bookmarks for the following \chapter etc. remove
+  % the next three lines.
+  \ifundefinedorrelax{hypersetup}{}{%
+    \edef\reserved@a{\noexpand\hypersetup{bookmarkstype=\ext@toc}}\reserved@a
+  }%
+  % Reserve the toc extension
+  \ifattoclist{\ext@toc}{}{\addtotoclist[toc]{\ext@toc}}%
+}
+\newcommand*{\partcontents}[1][\thepart]{%
+  \ifattoclist{toc#1}{%
+    \switchcontents{#1}%
+  }{%
+    \switchcontents{#1}%
+    \listoftoc[Contents of this Part]{\ext@toc}% show contents only for new extensions
+  }%
+}
+
+\newcommand*{\chaptercontents}[1][\thechapter]{%
+  \ifattoclist{toc#1}{%
+    \switchcontents{#1}%
+  }{%
+    \switchcontents{#1}%
+    \listoftoc[Contents of this Chapter]{\ext@toc}% show contents only for new extensions
+  }%
+}
+
+\makeatother
+ 
+\begin{document}
+\tableofcontents
+\part{First Part}
+\blinddocument
+ 
+\part{Second Part}
+\partcontents% use \jobname.toc\thepart as new toc file and show the contents
+\blinddocument
+ 
+\switchcontents{}% switch back to \jobname.toc as toc file
+% alternative:
+%\partcontents[]% switch back to \jobname.toc as toc file
+\part{Third Part}
+\blinddocument
+ 
+\part{Fourth Part}
+\partcontents% use \jobname.toc\thepart as new toc file and show the contents
+\blinddocument
+
+\chapter {New chapter}
+\chaptercontents
+  \section{New section}
+  \section{Test section}  
+  \begin{figure}
+    \includegraphics[width=.48\linewidth]{example-image-a} \hfill
+    \includegraphics[width=.48\linewidth]{example-image-b}
+    \caption{MWE to demonstrate how to place to images side-by-side}
+  \end{figure}
+  \blindtext
+ 
+\end{document}

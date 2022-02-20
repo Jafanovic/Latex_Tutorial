@@ -1,0 +1,41 @@
+% How can I redefine \int to put a negative space after the integral sign, but keep the limits
+% properly set?
+% https://tex.stackexchange.com/questions/233817/
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm, amsbsy}
+\usepackage{bm}
+\usepackage{xparse}
+
+\let\oldint\int % for the comparison
+
+\RenewDocumentCommand{\int}{e{_^}}{%
+  \DOTSI
+  \intop_{\IfValueT{#1}{#1}}^{\IfValueT{#2}{#2}}%
+  \mspace{-4mu}%
+}
+
+\NewDocumentCommand{\diff}{om}{% equivalent, but easier with xparse
+  \mathop{\mathrm{d}\IfValueT{#1}{^{#1}}#2}
+}
+
+\begin{document}
+
+  This is the normal typesetting
+  \begin{equation}
+  \oldint_0^\infty \diff[3]{\bm{r}} f(\bm{r}),
+  \end{equation}
+  This is what I would want:
+  \begin{equation}
+  \oldint_0^\infty \mspace{-4mu}\diff[3]{\bm{r}} f(\bm{r}),
+  \end{equation}
+  and this is what we get
+  \begin{equation}
+  \int_0^\infty \diff[3]{\bm{r}} f(\bm{r}),
+  \end{equation}
+  with command "limits" it doesn't work
+  \begin{equation}
+    \Gamma(z)=\int\limits_0^\infty e^{-x}x^{z-1}\,dx
+  \end{equation}
+
+\end{document}

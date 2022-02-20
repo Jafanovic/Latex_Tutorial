@@ -1,0 +1,19 @@
+% https://tex.stackexchange.com/questions/268370/greek-accents-with-tex-gyre-termes-in-lualatex-and-xelatex
+% https://tex.stackexchange.com/questions/521367/unicode-math-interferes-with-siunitx-and-ignore-setting-for-complex-unit/521370#521370
+    \documentclass{scrbook}
+      \usepackage{fontspec} 
+        \setmainfont{TeX Gyre Termes}
+      % \usepackage{amsmath, amssymb, amsthm, amsbsy}
+      % \usepackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+      %   \setmathfontface\mathrm{Latin Modern Math}
+      % \usepackage{siunitx}
+
+    \usepackage{luamath}
+
+    \begin{document}
+      \num{1+2i} or \(\num{1+2i}\) test: \(\imath\)
+      output
+      \SI{10}{\micro\m}
+      \SI[mode=text]{10}{\micro\m} % just for reference 
+
+    \end{document}

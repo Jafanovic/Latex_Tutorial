@@ -1,0 +1,36 @@
+\documentclass[a5paper, twocolumn]{scrbook}
+\usepackage{minitoc}
+\usepackage{lipsum}
+\renewcommand\mtcgapbeforeheads{0pt}
+\renewcommand\mtcgapafterheads{0pt}
+
+\DeclareTOCStyleEntry[%
+    numwidth=4em, 
+    indent=3em, 
+    beforeskip=1em
+  ]{tocline}{part} % scrguien page 357
+
+  \setcounter{tocdepth}{-1} % 
+
+\begin{document}
+\frontmatter
+  \doparttoc
+  \tableofcontents
+  \setcounter{part}{38}
+  \part*{part I}
+  \addtocounter{part}{1}
+  \addcontentsline{toc}{part}{\protect\numberline{\thepart} line added to TOC: part Test}
+  \parttoc
+\mainmatter
+  \chapter{Title of the first chapter}
+    \lipsum[1]
+  \chapter{Title of the second chapter}
+    \lipsum[1]
+
+\part[MAI: Matematická analýza]{part II}
+% \addtocounter{part}{1}
+% \addcontentsline{toc}{part}{\protect\numberline{\thepart} line added to TOC: part Test 2}
+\backmatter 
+\appendix% I am not sure where I should invoke \appendix
+        \part{Appendix}
+\end{document}

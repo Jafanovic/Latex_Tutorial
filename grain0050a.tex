@@ -1,0 +1,30 @@
+\documentclass{article} 
+\usepackage{xr-hyper} 
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage{hyperref} 
+
+
+\externaldocument[B-]{grain0050b}[grain0050b.pdf]% <- full or relative path 
+\listfiles
+\begin{document}
+    This is a test for math.
+    \begin{equation}
+        E=mc^2 \label{eq:1}
+    \end{equation}
+    This is a second test for math.
+    \begin{equation}
+        r = \sqrt{x^2 + y^2} \label{eq:2}
+    \end{equation}
+    In document B Eq.~~(\ref{B-eq:x}) 
+
+  { \centering
+    \captionsetup{type=figure}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \captionof{figure}{Maxwell's velocity 
+      distribution \(T_1 = \protect\SI{300}{\protect\kelvin}\).
+    \label{fig:048}}
+  \par}
+\end{document}

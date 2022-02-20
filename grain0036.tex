@@ -1,0 +1,19 @@
+% 1404 px = 157.794690265 mm
+% 1872 px = 210.392920354 mm
+% 226 DPI
+\documentclass{article}
+\usepackage[
+  headinclude=false,
+  footinclude=false,
+  paper=A8
+  % landscape
+]{typearea}
+\areaset{157.794 mm}{210.392 mm}
+\pagestyle{empty}
+\usepackage{blindtext}
+\begin{document}
+\section*{Supported Paper Sizes}
+  letter, legal, executive, a0, a1 \dots\ %
+  b0, b1 \dots\ c0, c1 \dots\ d0, d1 \dots
+  \blindtext
+\end{document}

@@ -1,0 +1,31 @@
+% lualatex.exe \providecommand{\DebugMode}{true}\input{grain0055_vol01.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=grain0055_vol01
+% https://tex.stackexchange.com/questions/79493/ultrafast-pdflatex-with-precompiling
+
+\documentclass{scrbook}
+  \usepackage{xr-hyper}
+  \usepackage{siunitx}
+  \usepackage{graphicx}
+  \usepackage{caption}
+  \usepackage{hyperref}
+
+
+
+\begin{document}
+\section{First section}\label{section}
+\begin{figure}[ht!]
+  \centering
+  \includegraphics{example-image-a}
+  \caption{Units \qty{10}{\m}}
+  \label{fig:example}
+\end{figure}
+
+% another figure\newline
+% {\centering
+% \captionsetup{type=figure}
+% \includegraphics{example-image-b}
+% \captionof{figure}{Relativistické jev \qty{10}{\m}
+% \label{fyz:fig0906a}
+% }
+% \par}
+
+\end{document}

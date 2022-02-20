@@ -1,0 +1,114 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{polynom}
+\usepackage{lipsum}
+
+\begin{document}
+\lipsum[2]
+
+    \begin{equation*}
+      \rotatebox{90}{$
+        {\polylongdiv[style=C,div=:]{2x^4-5x^2+14x+13}{x^2-x-2}}
+      $}
+    \end{equation*}
+
+    \begin{equation}
+      \rotatebox{90}{$\begin{bmatrix}
+          \frac{1}{\phi_1} &
+          \frac{1}{\phi_1} &
+          \frac{1}{\phi_1} &
+          \frac{1}{\phi_1} &
+          0 &
+          0 &
+          0 &
+          0 &
+          0 &
+          0 \\
+          0 &
+          \frac{1}{\phi_2} &
+          \frac{1}{\phi_2} &
+          \frac{1}{\phi_2} &
+          \frac{1}{\phi_2} &
+          \frac{1}{\phi_2} &
+          \frac{1}{\phi_2} &
+          0 &
+          0 &
+          0 \\
+          0 &
+          0 &
+          \frac{1}{\phi_3} &
+          \frac{1}{\phi_3} &
+          0 &
+          \frac{1}{\phi_3} &
+          \frac{1}{\phi_3} &
+          \frac{1}{\phi_3} &
+          \frac{1}{\phi_3} &
+          0 \\
+          0 &
+          0 &
+          0 &
+          \frac{1}{\phi_4} &
+          0 &
+          0 &
+          \frac{1}{\phi_4} &
+          0 &
+          \frac{1}{\phi_4} &
+          \frac{1}{\phi_4} \\
+          \frac{1}{1+\mathrm{e}^{a2+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          0 &
+          0 &
+          0 &
+          0 &
+          0 &
+          0 \\
+          0 &
+          \frac{1}{1+\mathrm{e}^{a3}} &
+          \frac{-1}{1+\mathrm{e}^{-a3}} &
+          \frac{-1}{1+\mathrm{e}^{-a3}} &
+          \frac{1}{1+\mathrm{e}^{a3+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a3+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a3+m)}} &
+          0 &
+          0 &
+          0 \\
+          0 &
+          0 &
+          \frac{1}{1+\mathrm{e}^{a4}} &
+          \frac{-1}{1+\mathrm{e}^{-a4}} &
+          0 &
+          \frac{1}{1+\mathrm{e}^{a4}} &
+          \frac{-1}{1+\mathrm{e}^{-a4}} &
+          \frac{1}{1+\mathrm{e}^{a4+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a4+m)}} &
+          0 \\
+          0 &
+          0 &
+          0 &
+          \frac{1}{1+\mathrm{e}^{a5}} &
+          0 &
+          0 &
+          \frac{1}{1+\mathrm{e}^{a5}} &
+          0 &
+          \frac{1}{1+\mathrm{e}^{a5}} &
+          \frac{1}{1+\mathrm{e}^{a5+m}} \\
+          \frac{1}{1+\mathrm{e}^{a2+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{1}{1+\mathrm{e}^{a3+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a3+m)}} &
+          \frac{-1}{1+\mathrm{e}^{-(a2+m)}} &
+          \frac{1}{1+\mathrm{e}^{a4+m}} &
+          \frac{-1}{1+\mathrm{e}^{-(a4+m)}} &
+          \frac{1}{1+\mathrm{e}^{a5+m}}
+      \end{bmatrix}$}
+  \end{equation}    
+
+\lipsum[2]
+\end{document}
+  

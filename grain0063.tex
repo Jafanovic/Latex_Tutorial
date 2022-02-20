@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage{unicode-math}
+\AtBeginDocument{\robustify\pi}
+\usepackage{siunitx}
+\sisetup{
+  input-digits = 0123456789\pi,    
+}
+\begin{document}
+
+  \SI{4\pi e-7}{\henry\per\meter}, or \num{10e0.75}
+
+\end{document}

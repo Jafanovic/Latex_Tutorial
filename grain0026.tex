@@ -1,0 +1,17 @@
+        \documentclass{article}
+        \usepackage{graphicx}
+        \usepackage{subcaption}
+        \usepackage{blindtext}
+        \usepackage{mwe}
+
+        \begin{document}
+        \blindtext
+            \begin{figure}[ht!]
+                \centering
+                \subcaptionbox{ Text1 \label{figA}}{\includegraphics[width=0.6\linewidth]{example-image-a}} \linebreak
+                \subcaptionbox{ Text2 \label{figB}}{\includegraphics[width=0.3\linewidth]{example-image-a}} 
+                \subcaptionbox{ Text3 \label{figC}}{\includegraphics[width=0.3\linewidth]{example-image-a}}
+                \caption{Text}
+                \label{AES:fig_MUE6_311}
+            \end{figure}
+        \end{document}      

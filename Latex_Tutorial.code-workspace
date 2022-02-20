@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"latex-workshop.latex.autoBuild.run": "never",
+		"latex-workshop.message.error.show": false,
+		"latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false
+	}
+}

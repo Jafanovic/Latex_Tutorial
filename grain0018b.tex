@@ -1,0 +1,146 @@
+% https://tex.stackexchange.com/questions/235139/using-the-animate-package-without-adobe
+% Animations run in all contemporary Web browsers, while Blink-based ones (Chromium, Chrome, Opera)
+% have the best performance. Also run on mobile devices.
+
+% Compilation:
+% --------------
+% 1. latex grain018b.tex
+% 2. latex grain018b.tex
+% 3. dvisvgm --font-format=woff --exact --zoom=-1 -p1 grain0018b
+% 3. dvisvgm --font-format=woff --exact --zoom=-1 -p2 grain0018b
+% 3. dvisvgm --font-format=woff --exact --zoom=-1 -p3 grain0018b
+
+\documentclass[dvisvgm,hypertex,aspectratio=169]{beamer}
+\usefonttheme{serif}
+
+\usepackage{animate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PageDown, PageUp key event handling; navigation symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[totpages]{zref}
+\usepackage{atbegshi}
+\usepackage{fontawesome}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginShipout{%
+  \AtBeginShipoutAddToBox{%
+    \special{dvisvgm:raw
+      <defs>
+      <script type="text/javascript">
+      <![CDATA[
+        document.addEventListener('keydown', function(e){
+          if(e.key=='PageDown'){
+            \ifnum\thepage<\ztotpages
+              document.location.replace('\jobname-\the\numexpr\thepage+1\relax.svg');%
+            \fi
+          }else if(e.key=='PageUp'){
+            \ifnum\thepage>1
+              document.location.replace('\jobname-\the\numexpr\thepage-1\relax.svg');%
+            \fi%
+          }
+        });
+      ]]>
+      </script>
+      </defs>
+    }%
+  }%
+  \AtBeginShipoutUpperLeftForeground{%
+    \raisebox{-\dimexpr\height+0.5ex\relax}[0pt][0pt]{\makebox[\paperwidth][r]{%
+      \normalsize\color{structure!40!}%
+      \ifnum\thepage>1%
+        \href{\jobname-\the\numexpr\thepage-1\relax.svg}{\faArrowLeft}%
+      \else%  
+        \textcolor{lightgray}{\faArrowLeft}%  
+      \fi\hspace{0.5ex}%
+      \ifnum\thepage<\ztotpages%
+        \href{\jobname-\the\numexpr\thepage+1\relax.svg}{\faArrowRight}%
+      \else%
+        \textcolor{lightgray}{\faArrowRight}%  
+      \fi%
+      \hspace{0.5ex}%
+    }}%
+  }%  
+}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%required by PSTricks example
+\usepackage[dvipsnames,svgnames]{pstricks}
+\usepackage{pst-node,pst-plot,pst-eucl}
+\usepackage{pst-solides3d}
+\usepackage{multido}
+\usepackage[nomessages]{fp}
+
+\title{Using package \emph{animate} without Adobe}
+\subtitle{Use a Web browser and press \framebox{F11}}
+\author{AlexG}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Animation}
+  trivial example
+  \begin{center}
+    \begin{animateinline}[controls]{2}
+      \multiframe{10}{i=0+1}{\Huge\fbox{\i}}
+    \end{animateinline}  
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  PSTricks example by J. Gilg
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\R{4}            % Radius des festen Kreises (Length fixed Circle)  
+\def\r{1}            % Radius des abrollenden Kreises (Length rolling Circle)
+\def\A{0.75}         % Abstand erzeugenden Punkt zu Mittelpunkt des abrollenden Kreises (Length Pointer)
+\def\winkel{360}     % Winkel: 1 Umlauf entspricht 360 (Angle: 1 revolution corresponds to 360)
+\FPdiv{\myDeltaA}{\winkel}{90}%
+
+\def\psBall{\rput(0,0){\psSolid[
+  object=sphere,r=0.35,
+  hue=0 1,
+  RotX=\ai\space,ngrid=12](0,0,0)}}
+
+\def\myFigure{%
+  \pstVerb{% erzeugender Punkt (parameterized Hypocycloide)
+    /Xcoord \ai\space cos \R\space \r\space sub mul \ai\space \R\space \r\space sub \r\space div mul cos \A\space mul add def % (R-r)cos(a)+A cos[(R/r-1) a]
+    /Ycoord \ai\space sin \R\space \r\space sub mul \ai\space \R\space \r\space sub \r\space div mul sin \A\space mul sub def % (R-r)sin(a)-A sin[(R/r-1) a]
+  }%
+
+  % erzeugender Punkt (generating point)
+  \rput(0,0){\rput(!Xcoord Ycoord){\psBall}}%
+
+  \rput(0,0){\psSolid[object=cube,ngrid=4,
+     hue=0 1,
+     hollow,
+     a=0.5,
+     RotZ=-\ai\space](0,0,0)%
+  }
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[t]{PSTricks Animation}
+At the end of a rainbow \dots, by Jürgen Gilg.
+\begin{itemize}
+  \item best viewed in Blink-based browsers, such as Chromium, Chrome, Opera
+  \item Firefox rather disappointing
+  \item frame rate printed to JavaScript console (Ctrl+Shift+I)
+\end{itemize}
+\begin{center}
+  \raisebox{0pt}[0.65\height][0pt]{%
+  \begin{animateinline}[measure,loop,controls,height=0.8\textheight]{50}
+  \multiframe{90}{i=0+1}{%
+      \FPeval{ai}{myDeltaA*\i}%
+    \begin{pspicture}(-5,-5)(5,5)\myFigure\end{pspicture}%
+  }%
+  \end{animateinline}%
+}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}\Huge The End\end{center}  
+\end{frame}
+
+\end{document}

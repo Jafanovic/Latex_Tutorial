@@ -1,0 +1,8 @@
+
+% https://tex.stackexchange.com/questions/598021/siunitx-version-v3-0-2-how-to-typeset-num10e0-75?noredirect=1#comment1499581_598021
+\documentclass{article}
+\usepackage{siunitx}
+\begin{document}    
+  \num[input-digits = .0123456789]{10e0.75}
+  \num[parse-numbers = false]{10 \times10^{0.75}}
+\end{document}
